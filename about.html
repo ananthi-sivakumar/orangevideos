@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Orange Videos – 13+ Years of Video Production</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ── INTRO ── */
+.about-intro {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:5rem; padding:5rem 4rem 6rem;
+  align-items:center;
+}
+.about-copy p { font-size:1.05rem;line-height:1.95;color:rgba(255,255,255,0.7);margin-bottom:1.4rem; }
+.about-copy p strong { color:var(--white);font-weight:700; }
+.about-cta { display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap; }
+
+/* ── 3D CUBE (rotating) ── */
+.cube-wrap { perspective:1000px; display:flex; align-items:center; justify-content:center; height:380px; }
+.cube3d { width:200px;height:200px;position:relative;transform-style:preserve-3d;animation:spinCube 14s linear infinite; }
+@keyframes spinCube{0%{transform:rotateX(18deg)rotateY(0)}100%{transform:rotateX(18deg)rotateY(360deg)}}
+.face { position:absolute;width:200px;height:200px;display:flex;align-items:center;justify-content:center;font-family:'Raleway',sans-serif;font-weight:900;font-size:1.4rem;letter-spacing:3px;text-transform:uppercase;border:1.5px solid; }
+.face.front  { transform:translateZ(100px);border-color:rgba(242,101,34,0.7);background:rgba(242,101,34,0.08);color:#F26522; }
+.face.back   { transform:rotateY(180deg)translateZ(100px);border-color:rgba(255,165,0,0.7);background:rgba(255,165,0,0.08);color:#FFA500; }
+.face.left   { transform:rotateY(-90deg)translateZ(100px);border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.04);color:#fff; }
+.face.right  { transform:rotateY(90deg)translateZ(100px);border-color:rgba(255,140,0,0.7);background:rgba(255,140,0,0.08);color:#FF8C00; }
+.face.top    { transform:rotateX(90deg)translateZ(100px);border-color:rgba(242,101,34,0.4);background:rgba(242,101,34,0.05);color:var(--orange); }
+.face.bottom { transform:rotateX(-90deg)translateZ(100px);border-color:rgba(255,165,0,0.4);background:rgba(255,165,0,0.05);color:#FFA500; }
+
+/* ── APPROACH PILLARS ── */
+.approach-section { background:var(--dark2); padding:6rem 4rem; border-top:1px solid rgba(255,255,255,0.04); }
+.pillars { display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-top:4rem; }
+.pillar {
+  background:var(--dark3);border:1px solid rgba(242,101,34,0.12);
+  border-radius:12px;padding:3rem;position:relative;overflow:hidden;
+  transition:all 0.4s;
+}
+.pillar::before { content:'';position:absolute;inset:0;background:var(--grad);opacity:0;transition:opacity 0.4s;z-index:0; }
+.pillar:hover { border-color:rgba(242,101,34,0.5);transform:translateY(-6px);box-shadow:0 20px 50px rgba(242,101,34,0.12); }
+.pillar:hover::before { opacity:0.07; }
+.pillar>*{position:relative;z-index:1;}
+.pillar-num { font-family:'Raleway',sans-serif;font-weight:900;font-size:5rem;color:rgba(242,101,34,0.15);line-height:1;margin-bottom:1rem; }
+.pillar-title { font-family:'Raleway',sans-serif;font-weight:800;font-size:1.5rem;margin-bottom:0.8rem; }
+.pillar-title .hl { color:var(--orange); }
+.pillar-desc { color:var(--gray);font-size:0.9rem;line-height:1.8; }
+
+/* ── BTS / SHOWREEL ── */
+.showreel-section { padding:6rem 4rem; text-align:center; }
+.showreel-player { margin:3rem auto 0;max-width:900px;border-radius:12px;overflow:hidden;border:2px solid rgba(242,101,34,0.2);box-shadow:0 30px 80px rgba(0,0,0,0.5); }
+.showreel-thumb { width:100%;aspect-ratio:16/9;background:url('https://www.orangevideos.in/assets/images/about-us/about-us-bts.jpg') center/cover;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative; }
+.showreel-thumb::before { content:'';position:absolute;inset:0;background:rgba(0,0,0,0.45); }
+.play-btn { width:80px;height:80px;border-radius:50%;background:var(--orange);border:none;display:flex;align-items:center;justify-content:center;font-size:1.8rem;cursor:pointer;position:relative;z-index:1;transition:all 0.3s;box-shadow:0 0 0 0 rgba(242,101,34,0.4);animation:playPulse 2s ease infinite;color:#000; }
+.play-btn:hover{transform:scale(1.1);}
+@keyframes playPulse{0%{box-shadow:0 0 0 0 rgba(242,101,34,0.4)}70%{box-shadow:0 0 0 22px rgba(242,101,34,0)}100%{box-shadow:0 0 0 0 rgba(242,101,34,0)}}
+
+/* ── TEAM VALUES ── */
+.values-section { background:var(--dark2); padding:6rem 4rem; border-top:1px solid rgba(255,255,255,0.04); }
+.values-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem; }
+.val-card { background:var(--dark3);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:2.5rem;transition:all 0.35s; }
+.val-card:hover { border-color:rgba(242,101,34,0.35);transform:translateY(-6px);box-shadow:0 16px 40px rgba(242,101,34,0.1); }
+.val-icon { font-size:2.2rem;margin-bottom:1rem; }
+.val-title { font-family:'Raleway',sans-serif;font-weight:800;font-size:1.1rem;margin-bottom:0.6rem; }
+.val-desc { color:var(--gray);font-size:0.88rem;line-height:1.7; }
+
+/* ── TIMELINE ── */
+.timeline-section { padding:6rem 4rem; }
+.timeline { position:relative;max-width:800px;margin:4rem auto 0; }
+.timeline::before { content:'';position:absolute;left:80px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--orange),rgba(242,101,34,0.1)); }
+.tl-item { display:grid;grid-template-columns:80px 1fr;gap:3rem;padding:2.5rem 0;position:relative; }
+.tl-year { font-family:'Raleway',sans-serif;font-weight:900;font-size:1.6rem;color:var(--orange);text-align:right;line-height:1.2;padding-right: 10px; }
+.tl-dot { position:absolute;left:74px;top:2.8rem;width:14px;height:14px;border-radius:50%;border:2px solid var(--orange);background:var(--dark);z-index:1;box-shadow:0 0 12px var(--orange); }
+.tl-body { border-bottom:1px solid rgba(255,255,255,0.05);padding-bottom:1.5rem; }
+.tl-title { font-family:'Raleway',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:0.4rem; }
+.tl-desc { color:var(--gray);font-size:0.88rem;line-height:1.7; }
+
+/* ── CLIENTS ── */
+.clients-section2 { background:var(--dark2);padding:5rem 4rem;border-top:1px solid rgba(255,255,255,0.04); }
+.clients-label { text-align:center;font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gray2);margin-bottom:2.5rem; }
+.clients-imgs { display:flex;justify-content:center;gap:2rem;flex-wrap:wrap; }
+.clients-imgs img { height:150px;width:auto;object-fit:contain;filter:brightness(0) invert(0.5);transition:filter 0.3s; }
+.clients-imgs img:hover { filter:brightness(0) invert(1); }
+
+@media(max-width:900px){
+  .about-intro{grid-template-columns:1fr;gap:2rem;padding:3rem 1.5rem;}
+  .pillars{grid-template-columns:1fr;}
+  .values-grid{grid-template-columns:1fr 1fr;}
+  .approach-section,.showreel-section,.values-section,.timeline-section,.clients-section2{padding:4rem 1.5rem;}
+}
+
+/* ── SECTION SPOTLIGHT (mouse move bg effect) ── */
+.spotlight-section {
+  position:relative; overflow:hidden;
+}
+.spotlight-section::after {
+  content:''; position:absolute; inset:0; pointer-events:none; z-index:0;
+  background:radial-gradient(
+    600px circle at var(--mx,50%) var(--my,50%),
+    rgba(242,101,34,0.07) 0%,
+    rgba(242,101,34,0.02) 40%,
+    transparent 70%
+  );
+  transition:background 0.1s;
+}
+.spotlight-section > * { position:relative; z-index:1; }
+</style>
+</head>
+<body>
+<div id="cursor"></div><div id="cursor-ring"></div>
+<a href="https://wa.me/919867409221" class="wa-float" target="_blank">💬</a>
+
+<div class="top-banner"><a href="https://www.youtube.com/watch?v=01hfHULpgbY" target="_blank">🎬 Watch our latest ad film teaser now! →</a></div>
+
+<nav style="top:38px">
+  <a class="logo" href="index.html"><img src="images/ov-logo.png" alt="Orange Videos"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Enquire Now</a>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- Mobile Nav Drawer -->
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="about.html" class="active">About</a>
+  <a href="services.html">Services</a>
+  <a href="work.html">Work</a>
+  <a href="careers.html">Careers</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="mobile-nav-cta">Enquire Now</a>
+</div>
+
+<main>
+  <div class="page-hero orb-bg">
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><a href="index.html">Home</a> / About</div>
+      <h1 class="page-h1">India's Best Creative <span class="hl">Video Agency</span><br>Meet Orange Videos</h1>
+      <p class="page-sub">Bringing Brands to Life — One Frame at a Time.</p>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar spotlight-section">
+    <div class="stat-box reveal-scale"><div class="stat-n" data-t="13" data-s="+">0</div><div class="stat-l">Years Experience</div></div>
+    <div class="stat-box reveal-scale"><div class="stat-n" data-t="1000" data-s="+">0</div><div class="stat-l">Projects</div></div>
+    <div class="stat-box reveal-scale"><div class="stat-n" data-t="600" data-s="+">0</div><div class="stat-l">Happy Clients</div></div>
+    <div class="stat-box reveal-scale"><div class="stat-n" data-t="70" data-s="+">0</div><div class="stat-l">Creative Minds</div></div>
+    <div class="stat-box reveal-scale"><div class="stat-n" data-t="12" data-s="">0</div><div class="stat-l">Countries & Counting</div></div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="about-intro spotlight-section">
+    <div class="about-copy reveal">
+      <div class="section-label">Who We Are</div>
+      <h2 class="section-title">Bringing Ideas to Life <span class="hl">Through Video</span></h2>
+      <div class="orange-line"></div>
+      <p>At <strong>Orange Videos</strong>, we're more than a production company — we're storytellers and creators. Founded in Mumbai with a passion for visual storytelling, we've spent 13+ years crafting videos that connect, inspire, and drive real business results.</p>
+      <p>From <strong>corporate films</strong> to <strong>brand videos</strong>, explainers, animations, and ad films — we produce every format with the same obsessive attention to quality. Our in-house team of 70+ creatives, combined with a global network of 100+ professionals, ensures every project is a masterpiece.</p>
+      <p>With offices in Mumbai, Bangalore, and the UAE, we serve clients across <strong>12 countries</strong> and every major industry — from BFSI and healthcare to fashion and FMCG.</p>
+      <div class="about-cta">
+        <a href="contact.html" class="btn-primary">Get Started →</a>
+        <a href="work.html" class="btn-outline">See Our Work</a>
+      </div>
+    </div>
+    <div class="cube-wrap reveal">
+      <div class="cube3d">
+        <div class="face front">STORY</div>
+        <div class="face back">CRAFT</div>
+        <div class="face left">CREATE</div>
+        <div class="face right">INSPIRE</div>
+        <div class="face top">FILM</div>
+        <div class="face bottom">GROW</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHOWREEL / BTS -->
+  <section class="showreel-section spotlight-section">
+    <div class="section-label reveal" style="justify-content:center;">See Our Work in Action</div>
+    <h2 class="section-title reveal-3d" style="text-align:center;">Great Stories Deserve <span class="hl">Great Execution</span></h2>
+    <p class="reveal" style="color:var(--gray);text-align:center;max-width:600px;margin:1rem auto;line-height:1.8;">At Orange Videos, we combine creativity and innovation to produce compelling video content. Watch our showreel and discover our signature style.</p>
+    <div class="showreel-player reveal">
+      <div class="showreel-thumb" onclick="openYTModal('https://www.youtube.com/watch?v=01hfHULpgbY')">
+        <div class="play-btn">▶</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;" class="reveal"><a href="contact.html" class="btn-outline">GET IN TOUCH</a></div>
+  </section>
+
+  <!-- APPROACH PILLARS -->
+  <section class="approach-section spotlight-section">
+    <div class="section-label reveal">Our Approach</div>
+    <h2 class="section-title reveal-3d">Big Production House Capabilities,<br><span class="hl">Boutique Studio Advantages</span></h2>
+    <div class="pillars">
+      <div class="pillar reveal"><div class="pillar-num">01</div><div class="pillar-title">We meet <span class="hl">DEADLINES</span></div><div class="pillar-desc">Tight timelines are our comfort zone. In 13+ years, we've never missed a client deadline. Our production pipeline is engineered for speed without sacrificing an ounce of quality.</div></div>
+      <div class="pillar reveal"><div class="pillar-num">02</div><div class="pillar-title">We exceed <span class="hl">EXPECTATIONS</span></div><div class="pillar-desc">We don't just deliver what you asked for — we deliver what your brand needs. Our creative team goes beyond the brief to produce work that surprises and delights.</div></div>
+      <div class="pillar reveal"><div class="pillar-num">03</div><div class="pillar-title">We do the <span class="hl">LITTLE THINGS</span> right</div><div class="pillar-desc">The details matter most. Lighting, wardrobe, audio, transitions — every micro-decision is made with intention. The little things are what separate good from great.</div></div>
+      <div class="pillar reveal"><div class="pillar-num">04</div><div class="pillar-title">And the <span class="hl">BIG THINGS</span> better</div><div class="pillar-desc">Strategy, storytelling, distribution — we think beyond the video. We ensure your content achieves the business outcomes you set out to achieve from day one.</div></div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="values-section spotlight-section">
+    <div class="section-label reveal">What Drives Us</div>
+    <h2 class="section-title reveal-3d">Our Core <span class="hl">Values</span></h2>
+    <div class="values-grid">
+      <div class="val-card reveal tilt-card shimmer-on-enter"><div class="val-icon">🎬</div><div class="val-title">Story-First Thinking</div><div class="val-desc">Every video starts with a powerful story. We believe authentic narratives create the deepest brand connections.</div></div>
+      <div class="val-card reveal tilt-card shimmer-on-enter"><div class="val-icon">🏆</div><div class="val-title">Uncompromising Quality</div><div class="val-desc">From pre-production planning to the final color grade, quality is non-negotiable at every stage of our process.</div></div>
+      <div class="val-card reveal tilt-card shimmer-on-enter"><div class="val-icon">⚡</div><div class="val-title">Agile Execution</div><div class="val-desc">Fast-moving brands need a fast-moving agency. Our agile workflow adapts to your timelines and market needs.</div></div>
+      <div class="val-card reveal tilt-card shimmer-on-enter"><div class="val-icon">🌍</div><div class="val-title">Global Reach, Local Touch</div><div class="val-desc">Operating across 12 countries with cultural intelligence — we create content that resonates globally and locally.</div></div>
+      <div class="val-card reveal tilt-card shimmer-on-enter"><div class="val-icon">🤝</div><div class="val-title">True Collaboration</div><div class="val-desc">We work as an extension of your team, not a vendor. Your brand's success is our success — always.</div></div>
+      <div class="val-card reveal tilt-card shimmer-on-enter"><div class="val-icon">💡</div><div class="val-title">Creative Innovation</div><div class="val-desc">From AI videos to 3D animation and cinematic drones — we stay at the frontier of video technology for you.</div></div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="timeline-section spotlight-section">
+    <div class="section-label reveal">Our Journey</div>
+    <h2 class="section-title reveal-3d" style="text-align:center;">13 Years of <span class="hl">Excellence</span></h2>
+    <div class="timeline">
+      <div class="tl-item reveal"><div class="tl-year">2011</div><div class="tl-dot"></div><div class="tl-body"><div class="tl-title">Founded in Mumbai</div><div class="tl-desc">Orange Videos was born from a simple belief — that every brand deserves a compelling visual story. Started with a small crew and a big vision in Andheri East, Mumbai.</div></div></div>
+      <div class="tl-item reveal"><div class="tl-year">2014</div><div class="tl-dot"></div><div class="tl-body"><div class="tl-title">First 100 Projects</div><div class="tl-desc">Crossed the 100-project milestone with clients spanning manufacturing, healthcare, and FMCG. Our reputation for on-time, high-quality delivery was established.</div></div></div>
+      <div class="tl-item reveal"><div class="tl-year">2017</div><div class="tl-dot"></div><div class="tl-body"><div class="tl-title">International Expansion</div><div class="tl-desc">Served our first international clients, delivering video content for brands across the Middle East and Southeast Asia. UAE operations commenced.</div></div></div>
+      <div class="tl-item reveal"><div class="tl-year">2020</div><div class="tl-dot"></div><div class="tl-body"><div class="tl-title">Digital-First Pivot</div><div class="tl-desc">Expanded into digital ad films, social media videos, and explainer animations. 2D & 3D animation studio fully operational with a dedicated in-house team.</div></div></div>
+      <div class="tl-item reveal"><div class="tl-year">2022</div><div class="tl-dot"></div><div class="tl-body"><div class="tl-title">Bangalore Studio Opens</div><div class="tl-desc">Third studio launched in Bangalore's Indiranagar. Team grew to 70+ creatives serving brands across South India and globally.</div></div></div>
+      <div class="tl-item reveal"><div class="tl-year">2024</div><div class="tl-dot"></div><div class="tl-body"><div class="tl-title">AI Video Production Launch</div><div class="tl-desc">Pioneered AI video production services in India, combining generative AI with cinematic storytelling for next-gen brand content.</div></div></div>
+    </div>
+  </section>
+
+  <!-- CLIENTS -->
+  <div class="clients-section2 reveal">
+    <div class="clients-label">Brands that trust us</div>
+    <div class="clients-imgs">
+      <img src="https://www.orangevideos.in/assets/images/corporate-lp/desktop-clients-imgs/img-2.webp" alt="Clients" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;">
+      <img src="https://www.orangevideos.in/assets/images/corporate-lp/desktop-clients-imgs/img-1.webp" alt="Clients" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;">
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-strip reveal orb-bg" id="get-in-touch">
+    <h2>Ready to Elevate Your Brand <span class="hl">with Video?</span></h2>
+    <p>Have a project in mind? Share your vision, and we'll craft a compelling video that brings it to life. Let's create something impactful together!</p>
+    <a href="contact.html" class="btn-primary">Get in Touch →</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand"><a class="footer-logo" href="index.html"><img src="images/ov-logo.png" alt="Orange Videos"></a><p>India's leading ad film production agency helping brands turn their vision into reality through dynamic video content.</p><div class="footer-social">
+  <a class="f-soc" href="https://www.youtube.com/@OrangeVideos" target="_blank" aria-label="YouTube" title="YouTube">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+  </a>
+  <a class="f-soc" href="https://www.instagram.com/orangevideos.in/" target="_blank" aria-label="Instagram" title="Instagram">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+  </a>
+  <a class="f-soc" href="https://www.linkedin.com/company/orangevideos/" target="_blank" aria-label="LinkedIn" title="LinkedIn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+  </a>
+  <a class="f-soc" href="https://www.facebook.com/orangevideos.in/" target="_blank" aria-label="Facebook" title="Facebook">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+  </a>
+</div></div>
+    <div class="footer-col"><h4>Main</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="work.html">Work</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><h4>Services</h4><a href="service-ad-films.html">Ad Films</a><a href="service-brand-films.html">Brand Films</a><a href="service-corporate-video.html">Corporate Videos</a><a href="service-explainer-videos.html">Explainer Videos</a><a href="service-2d-animation.html">2D Animation</a><a href="service-3d-animation.html">3D Animation Videos</a><a href="service-ai-videos.html">AI Videos</a></div>
+    <div class="footer-col"><h4>Contact</h4><strong>Mumbai</strong><p>102, Kaatyayani Business Center, Off Mahakali Caves Road, MIDC, Andheri East, Mumbai – 400093</p><strong style="margin-top:1rem;">UAE</strong><p>Shams Business Center, Sharjah Media City Free Zone, Sharjah UAE</p><a href="tel:+919867409221" style="color:var(--orange);margin-top:1rem;">+91 98674 09221</a><a href="mailto:sales@orangevideos.in" style="color:var(--orange);">sales@orangevideos.in</a></div>
+  </div>
+  <div class="footer-bottom"><span>© copyright 2026 · Orange Videos Production LLP</span><span>Mumbai · Bangalore · UAE</span></div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+document.querySelector('nav').style.top='38px';
+window.addEventListener('scroll',()=>{if(window.scrollY>100)document.querySelector('nav').style.top='0';else document.querySelector('nav').style.top='38px';});
+</script>
+
+<!-- ── GLOBAL YOUTUBE MODAL ── -->
+<div id="yt-modal-bg" style="display:none;position:fixed;inset:0;z-index:9500;background:rgba(10,10,10,0.92);backdrop-filter:blur(18px);align-items:center;justify-content:center;padding:1rem;">
+  <div id="yt-modal-box" style="position:relative;width:100%;max-width:900px;border-radius:12px;overflow:hidden;border:1px solid rgba(242,101,34,0.25);box-shadow:0 40px 100px rgba(0,0,0,0.7);">
+    <button onclick="closeYTModal()" style="position:absolute;top:0.8rem;right:0.8rem;z-index:2;width:36px;height:36px;border-radius:50%;background:rgba(242,101,34,0.9);border:none;color:#000;font-size:1rem;cursor:pointer;font-weight:900;line-height:1;display:flex;align-items:center;justify-content:center;">✕</button>
+    <iframe id="yt-modal-iframe" width="100%" style="aspect-ratio:16/9;border:none;display:block;" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture" src=""></iframe>
+  </div>
+</div>
+
+<script>
+// ── GLOBAL YT MODAL ────────────────────────────────────────────────────
+function getYTId(url){
+  if(!url||url==='#') return null;
+  var m=url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  return m?m[1]:null;
+}
+function openYTModal(url){
+  var id=getYTId(url);
+  if(!id){ window.open(url,'_blank'); return; }
+  var bg=document.getElementById('yt-modal-bg');
+  document.getElementById('yt-modal-iframe').src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0';
+  bg.style.display='flex';
+  document.body.style.overflow='hidden';
+}
+function closeYTModal(){
+  var bg=document.getElementById('yt-modal-bg');
+  bg.style.display='none';
+  document.getElementById('yt-modal-iframe').src='';
+  document.body.style.overflow='';
+}
+document.getElementById('yt-modal-bg').addEventListener('click',function(e){
+  if(e.target===this) closeYTModal();
+});
+// Make all mw-card and bts-card with YT links open in modal
+document.querySelectorAll('.mw-card[onclick], .bts-card[onclick]').forEach(function(el){
+  var oc=el.getAttribute('onclick')||'';
+  var m=oc.match(/window\.open\(['"]([^'"]+)['"]/);
+  if(m&&m[1]&&m[1]!=='#'&&m[1].includes('youtu')){
+    el.setAttribute('onclick',"openYTModal('"+m[1]+"')");
+  }
+});
+// Showreel play buttons (class showreel-thumb, play-btn-lg)
+document.querySelectorAll('.showreel-thumb, .showreel-mini-thumb').forEach(function(el){
+  var oc=el.getAttribute('onclick')||'';
+  var m=oc.match(/window\.open\(['"]([^'"]+)['"]/);
+  if(m&&m[1]) { el.setAttribute('onclick',"openYTModal('"+m[1]+"')"); }
+});
+</script>
+
+<script>
+// ── SECTION SPOTLIGHT BG EFFECT ──
+document.querySelectorAll('.spotlight-section').forEach(function(section) {
+  section.addEventListener('mousemove', function(e) {
+    var r  = section.getBoundingClientRect();
+    var mx = ((e.clientX - r.left) / r.width  * 100).toFixed(2);
+    var my = ((e.clientY - r.top)  / r.height * 100).toFixed(2);
+    section.style.setProperty('--mx', mx + '%');
+    section.style.setProperty('--my', my + '%');
+  });
+});
+</script>
+</body>
+</html>

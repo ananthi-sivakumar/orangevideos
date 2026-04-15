@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Marketing Blog – Trends, Tips & Insights | Orange Videos</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ── BLOG LISTING ── */
+.bl-hero{padding:9rem 4rem 5rem;background:var(--dark2);position:relative;overflow:hidden;}
+.bl-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 30%,rgba(242,101,34,0.1),transparent 60%);animation:heroPulse 7s ease-in-out infinite alternate;}
+.bl-hero::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(242,101,34,0.1) 1px,transparent 1px);background-size:38px 38px;animation:dotDrift 18s linear infinite;opacity:0.3;}
+@keyframes dotDrift{from{background-position:0 0}to{background-position:38px 38px}}
+.bl-inner{position:relative;z-index:1;max-width:680px;}
+.bl-ey{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(242,101,34,0.1);border:1px solid rgba(242,101,34,0.3);padding:0.3rem 1rem;border-radius:3px;font-family:'Montserrat',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:1.4rem;animation:riseUp 0.7s 0.1s both;}
+.bl-hero h1{font-family:'Raleway',sans-serif;font-weight:900;font-size:clamp(2.2rem,5vw,4rem);line-height:1.05;letter-spacing:-1.5px;margin-bottom:1rem;animation:riseUp 0.8s 0.2s both;}
+.bl-hero h1 .hl{color:var(--orange);}
+.bl-sub{color:var(--gray);font-size:0.95rem;line-height:1.8;animation:riseUp 0.8s 0.35s both;}
+/* Filter bar */
+.bl-filter{padding:1.2rem 4rem;background:rgba(13,13,13,0.92);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.06);position:sticky;top:82px;z-index:100;display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;}
+.bf-lbl{font-family:'Montserrat',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray2);margin-right:0.4rem;white-space:nowrap;}
+.cb{padding:0.35rem 0.9rem;border-radius:100px;border:1px solid rgba(255,255,255,0.1);background:transparent;color:var(--gray2);font-family:'Montserrat',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;white-space:nowrap;}
+.cb:hover{border-color:rgba(242,101,34,0.35);color:var(--white);}
+.cb.active{background:var(--orange);border-color:var(--orange);color:#000;box-shadow:0 4px 12px rgba(242,101,34,0.35);}
+/* Main layout */
+.bl-main{padding:3rem 4rem 6rem;}
+.bl-stats{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;}
+.bl-cnt{font-family:'Montserrat',sans-serif;font-size:0.7rem;color:var(--gray2);letter-spacing:1px;text-transform:uppercase;}
+.bl-cnt span{color:var(--orange);font-weight:700;}
+/* 3-column grid — STRICT */
+.bl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+/* Card */
+.bc{border-radius:12px;overflow:hidden;background:var(--dark3);border:1px solid rgba(255,255,255,0.05);transition:all 0.45s cubic-bezier(0.16,1,0.3,1);text-decoration:none;color:inherit;display:flex;flex-direction:column;position:relative;}
+.bc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--orange),var(--orange2));transform:scaleX(0);transition:transform 0.4s;}
+.bc:hover{transform:translateY(-8px);border-color:rgba(242,101,34,0.25);box-shadow:0 30px 70px rgba(0,0,0,0.5);}
+.bc:hover::after{transform:scaleX(1);}
+.bc-thumb{aspect-ratio:16/9;overflow:hidden;position:relative;isolation:isolate;flex-shrink:0;}
+.bc-thumb img{width:100%;height:100%;object-fit:cover;transition:transform 0.7s cubic-bezier(0.16,1,0.3,1);display:block;}
+.bc:hover .bc-thumb img{transform:scale(1.08);}
+.bc-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,13,13,0.5),transparent 60%);opacity:0;transition:opacity 0.4s;}
+.bc:hover .bc-ov{opacity:1;}
+.bc-rt{position:absolute;top:0.7rem;right:0.7rem;background:rgba(13,13,13,0.82);backdrop-filter:blur(6px);padding:0.18rem 0.55rem;border-radius:100px;font-family:'Montserrat',sans-serif;font-size:0.58rem;font-weight:700;letter-spacing:1px;color:var(--gray);}
+.bc-body{padding:1.4rem;flex:1;display:flex;flex-direction:column;}
+.bc-cat{font-family:'Montserrat',sans-serif;font-size:0.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem;}
+.bc-title{font-family:'Raleway',sans-serif;font-weight:800;font-size:0.95rem;line-height:1.4;color:var(--white);margin-bottom:0.6rem;letter-spacing:-0.2px;transition:color 0.3s;}
+.bc:hover .bc-title{color:var(--orange);}
+.bc-ex{color:var(--gray);font-size:0.8rem;line-height:1.7;flex:1;margin-bottom:1rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+.bc-ft{display:flex;align-items:center;justify-content:space-between;padding-top:0.8rem;border-top:1px solid rgba(255,255,255,0.06);gap:0.5rem;}
+.bc-meta{display:flex;align-items:center;gap:0.45rem;font-family:'Montserrat',sans-serif;font-size:0.62rem;color:var(--gray2);}
+.bc-av{width:22px;height:22px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Montserrat',sans-serif;font-size:0.55rem;font-weight:800;color:#000;}
+.bc-dot{width:3px;height:3px;border-radius:50%;background:var(--gray2);}
+.bc-arr{width:28px;height:28px;border-radius:50%;border:1px solid rgba(242,101,34,0.3);display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:0.78rem;flex-shrink:0;transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);}
+.bc:hover .bc-arr{background:var(--orange);color:#000;transform:rotate(-45deg);box-shadow:0 4px 12px rgba(242,101,34,0.4);}
+.bc.hidden{display:none!important;}
+@media(max-width:1100px){.bl-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:900px){.bl-hero,.bl-filter,.bl-main{padding-left:1.5rem;padding-right:1.5rem;}.bl-grid{grid-template-columns:1fr;}.bl-filter{top:0;padding:0.8rem 1.5rem;}}
+</style>
+</head>
+<body>
+<div id="cursor"></div><div id="cursor-ring"></div>
+<a href="https://wa.me/919867409221" class="wa-float" target="_blank">💬</a>
+<div class="top-banner"><a href="https://www.youtube.com/watch?v=01hfHULpgbY" target="_blank">🎬 Watch our latest ad film teaser now! →</a></div>
+<nav style="top:38px">
+  <a class="logo" href="index.html"><img src="images/ov-logo.png" alt="Orange Videos"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li><li><a href="work.html">Work</a></li>
+    <li><a href="careers.html">Careers</a></li><li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Enquire Now</a>
+</nav>
+<main>
+  <div class="bl-hero">
+    <div class="bl-inner">
+      <div class="bl-ey">📝 Orange Videos Blog</div>
+      <h1>Video <span class="hl">Insights</span>,<br>Tips &amp; Trends</h1>
+      <p class="bl-sub">Free knowledge on how video can help you achieve your marketing objectives. 56 articles from India's leading video production agency.</p>
+    </div>
+  </div>
+  <div class="bl-filter">
+    <span class="bf-lbl">Filter:</span>
+    <button class="cb active" onclick="fb(this,'all')">All (56)</button>
+    <button class="cb" onclick="fb(this,'ad-films')">Ad Films (7)</button>
+    <button class="cb" onclick="fb(this,'brand-films')">Brand Films (3)</button>
+    <button class="cb" onclick="fb(this,'corporate')">Corporate (19)</button>
+    <button class="cb" onclick="fb(this,'ai-videos')">AI Videos (7)</button>
+    <button class="cb" onclick="fb(this,'explainer')">Explainer (3)</button>
+    <button class="cb" onclick="fb(this,'podcast')">Podcast (5)</button>
+    <button class="cb" onclick="fb(this,'product')">Product (2)</button>
+    <button class="cb" onclick="fb(this,'testimonial')">Testimonial (2)</button>
+    <button class="cb" onclick="fb(this,'animation')">Animation (3)</button>
+    <button class="cb" onclick="fb(this,'documentary')">Documentary (2)</button>
+  </div>
+  <div class="bl-main">
+    <div class="bl-stats">
+      <div class="bl-cnt">Showing <span id="pc">56</span> articles</div>
+    </div>
+    <div class="bl-grid" id="bl-grid">
+      <a class="bc reveal tilt-card" href="blog-regional-content-vernacular-video-strategy-india.html" data-cat="explainer">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/regional-content-vernacular-video-strategy-thumbnail.png" alt="Vernacular Video Strategy: How Regional Content Is Driving Growth in India" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">8 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Explainer Videos</span>
+    <h3 class="bc-title">Vernacular Video Strategy: How Regional Content Is Driving Growth in India</h3>
+    <p class="bc-ex">68% of Indian users prefer content in their native language. Here's why vernacular video is the growth lever most brands are still underestimating.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">SA</div><span>Shweta Asuti</span><span class="bc-dot"></span><span>Apr 9, 2026</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-hiranandani-arena-brand-film-behind-the-scenes.html" data-cat="brand-films">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/hiranandani-arena-brand-film-behind-the-scenes-thumbnail.png" alt="How We Shot Hiranandani Arena a Brand Film in 3 Days" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">6 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Brand Films</span>
+    <h3 class="bc-title">How We Shot Hiranandani Arena a Brand Film in 3 Days</h3>
+    <p class="bc-ex">Three days, seven venues, forty degrees — and a golden retriever. Behind-the-scenes of our most logistically demanding brand film.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">SA</div><span>Shweta Asuti</span><span class="bc-dot"></span><span>Apr 6, 2026</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-explainer-video-indian-brands-2026.html" data-cat="explainer">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/explainer-video-indian-brands-2026-thumbnail.png" alt="Why Brands Are Switching to Explainer Videos in 2026" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">7 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Explainer Videos</span>
+    <h3 class="bc-title">Why Brands Are Switching to Explainer Videos in 2026</h3>
+    <p class="bc-ex">Shorter attention spans, complex products, and a mobile-first audience — explainer videos are no longer optional for Indian brands.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Apr 3, 2026</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-corporate-video-production-cost-india-2026.html" data-cat="corporate">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/corporate-video-production-cost-india-2026-thumbnail.png" alt="The Economics of Professional Video Production" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">9 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Corporate Videos</span>
+    <h3 class="bc-title">The Economics of Professional Video Production</h3>
+    <p class="bc-ex">What actually goes into the cost of a corporate video in India — and where the real value is created.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Mar 30, 2026</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-what-are-ai-videos-how-ai-powered-video-production-works.html" data-cat="ai-videos">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/what-are-ai-videos-how-ai-powered-video-production-works-thumbnail.webp" alt="What Are AI Videos? How AI-Powered Video Production Works" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">11 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">AI Videos</span>
+    <h3 class="bc-title">What Are AI Videos? How AI-Powered Video Production Works</h3>
+    <p class="bc-ex">A deep-dive into the technology, tools, and workflows behind AI video production.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Mar 27, 2026</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-bookachange-unmute-anthem-film-case-study.html" data-cat="ai-videos">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/blog-thumbnail-unmute.webp" alt="When AI Creates a Movement: The UnMute Anthem Story" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">5 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">AI Videos</span>
+    <h3 class="bc-title">When AI Creates a Movement: The UnMute Anthem Story</h3>
+    <p class="bc-ex">How AI helped us build an anthem that sparked real social impact for BookAChange's UnMute campaign.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Mar 20, 2026</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-video-production-strategy-for-meta-ads-roas.html" data-cat="corporate">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog/video-production-strategy/video-production-strategy-thumbnail.webp" alt="How a Well-Planned Shoot Can Fuel Your Meta Ads (and ROAS)" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">8 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Corporate Videos</span>
+    <h3 class="bc-title">How a Well-Planned Shoot Can Fuel Your Meta Ads (and ROAS)</h3>
+    <p class="bc-ex">The link between smart video production planning and performance marketing results.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Mar 10, 2026</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-pvc-history-animation-multimedia-video-production.html" data-cat="ai-videos">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/pvc_thumbnail.jpg" alt="Creating 100 Years Journey Through a 4 min Video in 6 Weeks" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">6 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">AI Videos</span>
+    <h3 class="bc-title">Creating 100 Years Journey Through a 4 min Video in 6 Weeks</h3>
+    <p class="bc-ex">How our team compressed a century of history into four compelling minutes in just six weeks.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Feb 26, 2026</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-types-of-product-videos-that-drive-sales.html" data-cat="product">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/types-of-product-videos-that-drive-sales-thumbnail.webp" alt="7 Types of Product Videos That Actually Drive Sales" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">6 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Product Videos</span>
+    <h3 class="bc-title">7 Types of Product Videos That Actually Drive Sales</h3>
+    <p class="bc-ex">From unboxing to demo to lifestyle — a breakdown of the seven product video formats.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Feb 9, 2026</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-ai-videos-how-ai-powered-video-production-works.html" data-cat="ai-videos">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/ai-videos-how-ai-powered-video-production-works-thumbnail.webp" alt="Wondering what AI Videos are? How AI-Powered Video Production Works?" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">7 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">AI Videos</span>
+    <h3 class="bc-title">Wondering what AI Videos are? How AI-Powered Video Production Works?</h3>
+    <p class="bc-ex">A clear explainer on AI video production and whether your brand should be using it.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Feb 9, 2026</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-podcasting-for-founders-personal-branding.html" data-cat="podcast">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/podcasting-for-founders-personal-branding.webp" alt="How Founders Can Use Podcasting to Strengthen Their Personal Brand" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">7 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Video Podcast</span>
+    <h3 class="bc-title">How Founders Can Use Podcasting to Strengthen Their Personal Brand</h3>
+    <p class="bc-ex">The most underrated brand-building tool for Indian founders in 2026.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Jan 14, 2026</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-ai-generated-product-videos-business-use-cases.html" data-cat="ad-films">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/ai-generated-product-videos-business-use-cases.webp" alt="3 Real Business Applications of AI-Generated Product Videos" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">5 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Ad Films</span>
+    <h3 class="bc-title">3 Real Business Applications of AI-Generated Product Videos</h3>
+    <p class="bc-ex">Three genuine use cases where AI-generated product video is already delivering ROI.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Jan 8, 2026</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-corporate-film-vs-brand-film-business-needs.html" data-cat="brand-films">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/corporate-film-brand-film.webp" alt="Corporate Film vs Brand Film: Key Differences" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">10 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Brand Films</span>
+    <h3 class="bc-title">Corporate Film vs Brand Film: Key Differences</h3>
+    <p class="bc-ex">Two terms used interchangeably, with very different outcomes.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Dec 26, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-from-output-to-operating-system-how-ai-changed-our-video-workflow.html" data-cat="ai-videos">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/from-output-to-operating-system.png" alt="From Output to Operating System: How AI Changed Our Video Workflow" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">8 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">AI Videos</span>
+    <h3 class="bc-title">From Output to Operating System: How AI Changed Our Video Workflow</h3>
+    <p class="bc-ex">How integrating AI tools transformed Orange Videos from a traditional production house.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Dec 18, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-why-great-ad-films-start-before-the-shoot-the-case-for-pre-production.html" data-cat="ad-films">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/why-great-ad-films.png" alt="Why Great Ad Films Start Before the Shoot" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">9 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Ad Films</span>
+    <h3 class="bc-title">Why Great Ad Films Start Before the Shoot</h3>
+    <p class="bc-ex">The most expensive mistake in ad film production is starting to shoot before you're ready.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Dec 11, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-telling-sunpetro-chemicals-story.html" data-cat="corporate">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/sunpetro-thumbnail.webp" alt="Tides, Timelines and Tight Cuts: Telling SunPetro Chemicals' Story" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">6 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Corporate Videos</span>
+    <h3 class="bc-title">Tides, Timelines and Tight Cuts: Telling SunPetro Chemicals' Story</h3>
+    <p class="bc-ex">A behind-the-scenes look at how we told the story of SunPetro Chemicals.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Dec 4, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-a-behind-the-scenes-look-at-hfc-arena.html" data-cat="ad-films">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/hfc-arena-thumbnail.webp" alt="Pitch. Produce. Play: A Behind-the-Scenes Look at HFC Arena" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">7 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Ad Films</span>
+    <h3 class="bc-title">Pitch. Produce. Play: A Behind-the-Scenes Look at HFC Arena</h3>
+    <p class="bc-ex">From the first pitch deck to the final cut — the full story of the HFC Arena brand film.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Nov 27, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-a-complete-guide-to-podcast-post-production-and-distribution.html" data-cat="podcast">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/post-production-thumbnail.webp" alt="From Edit to Audience: A Complete Guide to Podcast Post-Production" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">11 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Video Podcast</span>
+    <h3 class="bc-title">From Edit to Audience: A Complete Guide to Podcast Post-Production</h3>
+    <p class="bc-ex">Everything that happens after you stop recording — editing, mastering, publishing.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Nov 20, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-lights-mics-action-how-to-record-a-professional-grade-podcast.html" data-cat="podcast">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/production-thumbnail.webp" alt="Lights, Mics, Action: How to Record a Professional-Grade Podcast" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">9 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Video Podcast</span>
+    <h3 class="bc-title">Lights, Mics, Action: How to Record a Professional-Grade Podcast</h3>
+    <p class="bc-ex">The complete guide to setting up and recording a video podcast that sounds studio-quality.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Nov 13, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-the-ultimate-podcast-pre-launch-guide.html" data-cat="podcast">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/preproduction-thumbnail.webp" alt="Pre Production: The Ultimate Podcast Pre Launch Guide" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">8 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Video Podcast</span>
+    <h3 class="bc-title">Pre Production: The Ultimate Podcast Pre Launch Guide</h3>
+    <p class="bc-ex">Before you record a single episode, there are 12 decisions you need to make.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Nov 6, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-how-ai-revolutionizing-video-content-creation.html" data-cat="ai-videos">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/ai-video-thumbnail.png" alt="How AI is Revolutionizing Video Content Creation" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">8 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">AI Videos</span>
+    <h3 class="bc-title">How AI is Revolutionizing Video Content Creation</h3>
+    <p class="bc-ex">The practical impact of AI on video production — what's changed and what brands need to know.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Oct 30, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-the-power-of-visual-storytelling.html" data-cat="ad-films">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/visual-storytelling-thumbnail.jpeg" alt="The Power of Visual Storytelling: How Ad Films Shape Public Perception" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">7 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Ad Films</span>
+    <h3 class="bc-title">The Power of Visual Storytelling: How Ad Films Shape Public Perception</h3>
+    <p class="bc-ex">How the best ad films don't just sell products — they shift culture and build brand mythology.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Oct 17, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-bts-crafting-a-2d-animation-video-with-ease.html" data-cat="animation">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/bts-crafting-a-2d-animation-video-with-ease.webp" alt="BTS - Crafting a 2D Animation Video with Ease" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">6 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">2D Animation</span>
+    <h3 class="bc-title">BTS - Crafting a 2D Animation Video with Ease</h3>
+    <p class="bc-ex">A behind-the-scenes look at the 2D animation process — from script to storyboard to final frame.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Oct 10, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-the-future-of-video-production-trends-to-watch-in-2025.html" data-cat="corporate">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/the-future-of-video-production-trends-to-watch-in-2025.jpeg" alt="The Future of Video Production: Trends to Watch in 2025" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">9 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Corporate Videos</span>
+    <h3 class="bc-title">The Future of Video Production: Trends to Watch in 2025</h3>
+    <p class="bc-ex">Six trends reshaping the video production industry.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Oct 3, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-podcasting-could-be-the-best-marketing-strategy-for-your-brand.html" data-cat="podcast">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/podcasting-could-be-the-best-marketing-strategy-for-your-brand.webp" alt="Podcasting could be the Best Marketing Strategy for your Brand" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">7 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Video Podcast</span>
+    <h3 class="bc-title">Podcasting could be the Best Marketing Strategy for your Brand</h3>
+    <p class="bc-ex">Why podcasting has become the highest-ROI content format for B2B brands.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Sep 25, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-the-joy-and-challenges-of-making-a-school-video.html" data-cat="documentary">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/the-joy-and-challenges-of-making-a-school-video.jpeg" alt="The Joy and Challenges of Making a School Video" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">5 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Documentary</span>
+    <h3 class="bc-title">The Joy and Challenges of Making a School Video</h3>
+    <p class="bc-ex">Wrangling 300 students, matching uniforms, and capturing authentic childhood moments.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Sep 18, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-types-of-corporate-videos-that-every-business-should-consider.html" data-cat="corporate">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/types-of-corporate-videos-that-every-business-should-consider.png" alt="Types of Corporate Videos That Every Business Should Consider" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">8 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Corporate Videos</span>
+    <h3 class="bc-title">Types of Corporate Videos That Every Business Should Consider</h3>
+    <p class="bc-ex">A comprehensive guide to the 10 types of corporate videos.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Sep 18, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-power-of-customer-testimonial-videos.html" data-cat="testimonial">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/power-of-customer-testimonial-videos.webp" alt="Power of Customer Testimonial Videos" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">6 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Testimonial Videos</span>
+    <h3 class="bc-title">Power of Customer Testimonial Videos</h3>
+    <p class="bc-ex">93% of buyers say video testimonials are more convincing than written reviews.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Sep 11, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-smartphone-filmmaking-hacks-shoot-pro-quality-videos-with-just-your-phone.html" data-cat="corporate">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/smartphone-filmmaking-hacks-shoot-pro-quality-videos-with-just-your-phone.webp" alt="Smartphone Filmmaking Hacks: Shoot Pro Quality Videos With Just Your Phone" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">7 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Corporate Videos</span>
+    <h3 class="bc-title">Smartphone Filmmaking Hacks: Shoot Pro Quality Videos With Just Your Phone</h3>
+    <p class="bc-ex">Twelve proven techniques to get professional-looking video from your smartphone.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Sep 4, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-5-heartwarming-fathers-day-brand-campaigns.html" data-cat="ad-films">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/5-heartwarming-fathers-day-brand-campaigns.webp" alt="5 Heartwarming Father's Day Brand Campaigns" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">5 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Ad Films</span>
+    <h3 class="bc-title">5 Heartwarming Father's Day Brand Campaigns</h3>
+    <p class="bc-ex">Five ad films that got Father's Day exactly right.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Aug 28, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-curating-content-that-meets-every-audiences-need.html" data-cat="corporate">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/curating-content-that-meets-every-audiences-need.webp" alt="Reimagining Videos: Curating Content That Meets Every Audience's Need" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">6 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Corporate Videos</span>
+    <h3 class="bc-title">Reimagining Videos: Curating Content That Meets Every Audience's Need</h3>
+    <p class="bc-ex">How to build a video content strategy that serves awareness, consideration, and conversion.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Aug 21, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-how-to-choose-the-right-video-production-agency-india.html" data-cat="corporate">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/home/banner-img.webp" alt="How to Choose the Right Video Production Agency in India" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">8 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Corporate Videos</span>
+    <h3 class="bc-title">How to Choose the Right Video Production Agency in India</h3>
+    <p class="bc-ex">Ten criteria that separate world-class video production agencies from the rest.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Aug 14, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-drone-videography-guide-india-2025.html" data-cat="drone">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/home/discover-our-expertise/drone.webp" alt="A Complete Guide to Drone Videography for Indian Brands" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">7 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Drone Videography</span>
+    <h3 class="bc-title">A Complete Guide to Drone Videography for Indian Brands</h3>
+    <p class="bc-ex">Everything you need to know about commissioning drone video in India.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Aug 7, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-event-videography-tips-corporate-events.html" data-cat="event">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/home/discover-our-expertise/event.webp" alt="Event Videography: How to Get Maximum Value from Your Corporate Event Film" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">6 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Event Videography</span>
+    <h3 class="bc-title">Event Videography: How to Get Maximum Value from Your Corporate Event Film</h3>
+    <p class="bc-ex">Most event videos end up unwatched. Here's how to brief, shoot, and use event video that actually works.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Jul 31, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-3d-animation-vs-2d-animation-which-is-right.html" data-cat="animation">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/home/discover-our-expertise/3d-animation.webp" alt="3D Animation vs 2D Animation: Which Is Right for Your Brand?" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">7 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">2D Animation</span>
+    <h3 class="bc-title">3D Animation vs 2D Animation: Which Is Right for Your Brand?</h3>
+    <p class="bc-ex">A practical breakdown of when to choose 3D over 2D animation.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Jul 24, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-video-for-b2b-marketing-india.html" data-cat="corporate">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/home/discover-our-expertise/corporate-videos.webp" alt="Why B2B Companies in India Are Finally Taking Video Seriously" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">8 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Corporate Videos</span>
+    <h3 class="bc-title">Why B2B Companies in India Are Finally Taking Video Seriously</h3>
+    <p class="bc-ex">B2B video adoption in India is accelerating. Here's why enterprise brands are shifting budgets.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Jul 17, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-documentary-film-csr-impact-videos.html" data-cat="documentary">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/home/discover-our-expertise/documentry-film.webp" alt="Why CSR Documentary Films Are the Most Underused Brand Asset" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">6 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Documentary</span>
+    <h3 class="bc-title">Why CSR Documentary Films Are the Most Underused Brand Asset</h3>
+    <p class="bc-ex">CSR films build brand equity in ways no ad campaign can replicate.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Jul 10, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-how-to-brief-a-video-production-agency.html" data-cat="corporate">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/home/discover-our-expertise/corporate-videos.webp" alt="How to Brief a Video Production Agency: A Complete Guide" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">9 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Corporate Videos</span>
+    <h3 class="bc-title">How to Brief a Video Production Agency: A Complete Guide</h3>
+    <p class="bc-ex">The quality of your brief determines the quality of your video.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Jul 3, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-video-production-mumbai-complete-guide.html" data-cat="corporate">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/home/banner-img.webp" alt="Video Production in Mumbai: A Complete Guide for Brands" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">10 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Corporate Videos</span>
+    <h3 class="bc-title">Video Production in Mumbai: A Complete Guide for Brands</h3>
+    <p class="bc-ex">Everything you need to know about commissioning video production in Mumbai.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Jun 26, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-testimonial-video-production-guide.html" data-cat="testimonial">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/home/discover-our-expertise/testimonial.webp" alt="How to Produce Testimonial Videos That Actually Convert" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">7 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Testimonial Videos</span>
+    <h3 class="bc-title">How to Produce Testimonial Videos That Actually Convert</h3>
+    <p class="bc-ex">Most testimonial videos are forgettable. Here's the briefing, shooting, and editing approach that makes them work.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Jun 19, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-brand-film-roi-measuring-impact.html" data-cat="brand-films">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/home/discover-our-expertise/brand-films.webp" alt="How to Measure the ROI of a Brand Film" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">8 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Brand Films</span>
+    <h3 class="bc-title">How to Measure the ROI of a Brand Film</h3>
+    <p class="bc-ex">Brand films are notoriously hard to attribute. Here are the metrics that actually capture their impact.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Jun 12, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-animation-explainer-video-saas-fintech.html" data-cat="explainer">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/home/discover-our-expertise/explainer-videos.webp" alt="Why SaaS and Fintech Brands Need Animated Explainer Videos" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">6 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Explainer Videos</span>
+    <h3 class="bc-title">Why SaaS and Fintech Brands Need Animated Explainer Videos</h3>
+    <p class="bc-ex">Complex products, skeptical buyers, and short attention spans — animation is the SaaS marketer's best friend.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Jun 5, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-video-production-for-real-estate.html" data-cat="product">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/home/discover-our-expertise/product-video.webp" alt="Video Production for Real Estate: What Works and What Doesn't" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">7 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Product Videos</span>
+    <h3 class="bc-title">Video Production for Real Estate: What Works and What Doesn't</h3>
+    <p class="bc-ex">From drone flyovers to lifestyle brand films — a complete guide to video for Indian real estate.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>May 29, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-ai-video-tools-comparison-2025.html" data-cat="ai-videos">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/ai-videos/ai-videos-thumbnail.webp" alt="AI Video Tools Comparison: Sora, Runway, Kling and What We Use" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">10 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">AI Videos</span>
+    <h3 class="bc-title">AI Video Tools Comparison: Sora, Runway, Kling and What We Use</h3>
+    <p class="bc-ex">A practical, hands-on comparison of the leading AI video generation tools, tested by our team.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>May 22, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-video-content-calendar-strategy.html" data-cat="corporate">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/home/discover-our-expertise/social-media-videos.webp" alt="How to Build a 12-Month Video Content Calendar That Actually Gets Used" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">8 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Corporate Videos</span>
+    <h3 class="bc-title">How to Build a 12-Month Video Content Calendar That Actually Gets Used</h3>
+    <p class="bc-ex">Most content calendars get abandoned by February. Here's the framework that keeps brands consistent.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>May 15, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-healthcare-pharma-video-production-india.html" data-cat="corporate">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/home/discover-our-expertise/corporate-videos.webp" alt="Video Production for Healthcare and Pharma Brands in India" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">7 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Corporate Videos</span>
+    <h3 class="bc-title">Video Production for Healthcare and Pharma Brands in India</h3>
+    <p class="bc-ex">The unique compliance and creative challenges of producing video for healthcare and pharmaceutical brands.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>May 8, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-youtube-video-strategy-indian-brands.html" data-cat="corporate">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/home/discover-our-expertise/brand-films.webp" alt="YouTube Strategy for Indian Brands: What's Actually Working in 2025" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">9 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Corporate Videos</span>
+    <h3 class="bc-title">YouTube Strategy for Indian Brands: What's Actually Working in 2025</h3>
+    <p class="bc-ex">YouTube is India's second-largest search engine. Here's the production strategy that builds real audiences.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>May 1, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-corporate-video-distribution-strategy.html" data-cat="corporate">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/home/discover-our-expertise/corporate-videos.webp" alt="You've Made a Great Corporate Video. Now What?" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">6 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Corporate Videos</span>
+    <h3 class="bc-title">You've Made a Great Corporate Video. Now What?</h3>
+    <p class="bc-ex">Distribution is where most corporate video investments fail. Here's the strategy that maximises every rupee.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Apr 24, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-animation-video-production-process.html" data-cat="animation">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/home/discover-our-expertise/animation-video.webp" alt="Inside the Animation Production Process: From Brief to Delivery" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">8 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">2D Animation</span>
+    <h3 class="bc-title">Inside the Animation Production Process: From Brief to Delivery</h3>
+    <p class="bc-ex">A step-by-step breakdown of how our animation team takes a client brief to a finished video.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Apr 17, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-ad-film-pre-production-checklist.html" data-cat="ad-films">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/home/discover-our-expertise/ad-films-v1.webp" alt="The Ultimate Ad Film Pre-Production Checklist" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">7 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Ad Films</span>
+    <h3 class="bc-title">The Ultimate Ad Film Pre-Production Checklist</h3>
+    <p class="bc-ex">The 47-point checklist our production team runs through before every ad film shoot.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Apr 10, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-video-production-fmcg-brands-india.html" data-cat="ad-films">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/home/discover-our-expertise/ad-films-v1.webp" alt="Video Production for FMCG Brands: Lessons from 200+ Projects" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">8 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Ad Films</span>
+    <h3 class="bc-title">Video Production for FMCG Brands: Lessons from 200+ Projects</h3>
+    <p class="bc-ex">Lessons from 200+ FMCG video projects — on briefs, budgets, timelines, and creative decisions.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Apr 3, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-linkedin-video-strategy-b2b.html" data-cat="corporate">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/home/discover-our-expertise/corporate-videos.webp" alt="LinkedIn Video Strategy for B2B Brands: What's Working in 2025" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">7 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Corporate Videos</span>
+    <h3 class="bc-title">LinkedIn Video Strategy for B2B Brands: What's Working in 2025</h3>
+    <p class="bc-ex">LinkedIn is the highest-quality B2B content platform. Here's the video strategy that builds authority.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Mar 27, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-post-production-colour-grading-explained.html" data-cat="corporate">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/home/discover-our-expertise/corporate-videos.webp" alt="Colour Grading Explained: How Post-Production Transforms Your Video" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">6 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Corporate Videos</span>
+    <h3 class="bc-title">Colour Grading Explained: How Post-Production Transforms Your Video</h3>
+    <p class="bc-ex">What colour grading actually does and why it makes the difference between amateur and professional.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Mar 20, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-what-makes-a-great-video-script.html" data-cat="corporate">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/home/discover-our-expertise/brand-films.webp" alt="What Makes a Great Video Script: Lessons from 1000+ Productions" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">9 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Corporate Videos</span>
+    <h3 class="bc-title">What Makes a Great Video Script: Lessons from 1000+ Productions</h3>
+    <p class="bc-ex">The structural, tonal, and strategic qualities that separate a script that performs from one that falls flat.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Mar 13, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-video-production-for-startups-india.html" data-cat="corporate">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/home/discover-our-expertise/corporate-videos.webp" alt="Video Production for Startups: Getting Maximum Value on a Tight Budget" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">7 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Corporate Videos</span>
+    <h3 class="bc-title">Video Production for Startups: Getting Maximum Value on a Tight Budget</h3>
+    <p class="bc-ex">How early-stage and growth-stage startups can use video strategically without burning runway.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Mar 6, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+<a class="bc reveal tilt-card" href="blog-photoshoot-vs-video-production-which-do-you-need.html" data-cat="photoshoot">
+  <div class="bc-thumb"><img src="https://www.orangevideos.in/assets/images/home/discover-our-expertise/photoshoots-v1.webp" alt="Photoshoot vs Video Production: Which Does Your Brand Need Right Now?" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="bc-ov"></div><span class="bc-rt">6 min</span></div>
+  <div class="bc-body">
+    <span class="bc-cat">Photoshoots</span>
+    <h3 class="bc-title">Photoshoot vs Video Production: Which Does Your Brand Need Right Now?</h3>
+    <p class="bc-ex">When to invest in photography, when to invest in video, and when the answer is both — shot on the same day.</p>
+    <div class="bc-ft">
+      <div class="bc-meta"><div class="bc-av">OV</div><span>OrangeVideos</span><span class="bc-dot"></span><span>Feb 27, 2025</span></div>
+      <div class="bc-arr">→</div>
+    </div>
+  </div>
+</a>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand"><a class="footer-logo" href="index.html"><img src="images/ov-logo.png" alt="Orange Videos"></a><p>India's leading ad film production agency.</p><div class="footer-social"><a class="f-soc" href="https://www.youtube.com/@OrangeVideos" target="_blank" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a><a class="f-soc" href="https://www.instagram.com/orangevideos.in/" target="_blank" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a><a class="f-soc" href="https://www.linkedin.com/company/orangevideos/" target="_blank" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a class="f-soc" href="https://www.facebook.com/orangevideos.in/" target="_blank" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a></div></div>
+    <div class="footer-col"><h4>Main</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="work.html">Work</a><a href="careers.html">Careers</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><h4>Services</h4><a href="service-ad-films.html">Ad Films</a><a href="service-brand-films.html">Brand Films</a><a href="service-corporate-video.html">Corporate Videos</a><a href="service-explainer-videos.html">Explainer Videos</a><a href="service-2d-animation.html">2D Animation</a><a href="service-ai-videos.html">AI Videos</a></div>
+    <div class="footer-col"><h4>Contact</h4><strong>Mumbai</strong><p>102, Kaatyayani Business Center, Andheri East, Mumbai – 400093</p><a href="tel:+919867409221" style="color:var(--orange);display:block;margin-top:0.8rem;">+91 98674 09221</a><a href="mailto:sales@orangevideos.in" style="color:var(--orange);">sales@orangevideos.in</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 · Orange Videos Production LLP</span><span>Mumbai · Bangalore · UAE</span></div>
+</footer>
+<script src="shared.js"></script>
+<script>
+function fb(btn, cat) {
+  document.querySelectorAll('.cb').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  var cards = document.querySelectorAll('.bc[data-cat]');
+  var vis = 0;
+  // Hide/show first
+  cards.forEach(c => {
+    var show = cat === 'all' || c.dataset.cat === cat;
+    if (show) { c.classList.remove('hidden'); vis++; } else { c.classList.add('hidden'); }
+  });
+  // Then animate visible
+  var idx = 0;
+  cards.forEach(c => {
+    if (!c.classList.contains('hidden')) {
+      c.style.opacity='0'; c.style.transform='translateY(14px) scale(0.97)'; c.style.transition='none';
+      ;(function(card, d) {
+        requestAnimationFrame(() => setTimeout(() => {
+          card.style.transition = 'opacity 0.4s ease '+d+'ms, transform 0.4s cubic-bezier(0.34,1.56,0.64,1) '+d+'ms';
+          card.style.opacity='1'; card.style.transform='';
+        }, 16));
+      })(c, idx*40); idx++;
+    }
+  });
+  var pc = document.getElementById('pc');
+  if (pc) pc.textContent = vis === cards.length ? '56' : vis;
+}
+document.querySelector('nav').style.top='38px';
+window.addEventListener('scroll',function(){document.querySelector('nav').style.top=window.scrollY>100?'0':'38px';});
+</script>
+</body>
+</html>

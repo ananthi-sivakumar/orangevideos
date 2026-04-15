@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Work – Watch Orange Videos Portfolio | Best Video Production Projects</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ── FILTER SYSTEM ── */
+.filter-section {
+  padding:3rem 4rem 0;
+  background:var(--dark);
+  position:relative;
+}
+/* Tab row — Format / Industry */
+.filter-tabs {
+  display:flex; gap:0; margin-bottom:1.5rem;
+  border-bottom:1px solid rgba(255,255,255,0.07);
+}
+.filter-tab {
+  padding:0.6rem 1.4rem; background:none; border:none;
+  font-family:'Montserrat',sans-serif; font-size:0.72rem; font-weight:700;
+  letter-spacing:1.5px; text-transform:uppercase; color:var(--gray2);
+  cursor:pointer; position:relative; transition:color 0.3s;
+}
+.filter-tab::after {
+  content:''; position:absolute; bottom:-1px; left:0; right:0; height:2px;
+  background:var(--orange); transform:scaleX(0); transition:transform 0.35s var(--ease-out,ease);
+}
+.filter-tab.active { color:var(--orange); }
+.filter-tab.active::after { transform:scaleX(1); }
+.filter-tab:hover { color:var(--white); }
+
+/* Filter bar */
+.filter-bar-wrap { padding-bottom:2rem; }
+.filter-bar {
+  display:flex; gap:0.45rem; flex-wrap:wrap;
+  animation:filterFadeIn 0.35s ease;
+}
+.filter-bar.hidden { display:none; }
+@keyframes filterFadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+
+.fb {
+  position:relative; padding:0.5rem 1.2rem;
+  border-radius:100px;
+  border:1px solid rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.03);
+  color:var(--gray);
+  font-family:'Montserrat',sans-serif; font-size:0.7rem; font-weight:700;
+  letter-spacing:1px; text-transform:uppercase;
+  cursor:pointer; overflow:hidden;
+  transition:color 0.3s, border-color 0.4s, transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s;
+  display:inline-flex; align-items:center; gap:0.35rem;
+}
+.fb-icon { font-size:0.85rem; }
+.fb::before {
+  content:''; position:absolute; inset:0; border-radius:100px;
+  background:linear-gradient(135deg,var(--orange),var(--orange2));
+  transform:scaleX(0) scaleY(0.4); transform-origin:center;
+  transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s;
+  opacity:0; z-index:0;
+}
+.fb span { position:relative; z-index:1; }
+.fb-icon { position:relative; z-index:1; }
+.fb:hover {
+  color:rgba(255,255,255,0.9); border-color:rgba(242,101,34,0.5);
+  transform:translateY(-3px); box-shadow:0 8px 20px rgba(242,101,34,0.18);
+}
+.fb:hover::before { transform:scaleX(1) scaleY(1); opacity:0.16; }
+.fb.active {
+  color:#000; font-weight:800; border-color:var(--orange);
+  transform:translateY(-2px);
+  box-shadow:0 10px 26px rgba(242,101,34,0.4), 0 0 0 1px rgba(242,101,34,0.3);
+}
+.fb.active::before { transform:scaleX(1) scaleY(1); opacity:1; }
+
+/* result count */
+.filter-meta {
+  font-family:'Montserrat',sans-serif; font-size:0.7rem; color:var(--gray2);
+  letter-spacing:1px; text-transform:uppercase; margin-top:1rem;
+  display:flex; align-items:center; gap:0.8rem;
+}
+.filter-meta span { color:var(--orange); font-weight:700; }
+.filter-meta::before { content:''; width:16px; height:1px; background:var(--gray2); }
+
+/* active filter tag display */
+.active-filters {
+  display:flex; gap:0.4rem; flex-wrap:wrap; margin-top:0.6rem;
+}
+.af-tag {
+  display:inline-flex; align-items:center; gap:0.4rem;
+  padding:0.2rem 0.7rem; border-radius:100px;
+  background:rgba(242,101,34,0.12); border:1px solid rgba(242,101,34,0.3);
+  font-family:'Montserrat',sans-serif; font-size:0.65rem; font-weight:700;
+  letter-spacing:1px; text-transform:uppercase; color:var(--orange);
+}
+.af-tag .af-remove {
+  cursor:pointer; opacity:0.6; transition:opacity 0.2s;
+  font-size:0.8rem; line-height:1;
+}
+.af-tag .af-remove:hover { opacity:1; }
+
+
+/* ── WORK GRID ── */
+.work-main { padding:3rem 4rem 6rem; }
+.work-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem; }
+.wc {
+  border-radius:10px;overflow:hidden;position:relative;cursor:pointer;
+  aspect-ratio:16/11;background:var(--dark3);
+  transition:transform 0.4s,box-shadow 0.4s;
+  border:1px solid rgba(255,255,255,0.05);
+}
+.wc:hover { transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.5);border-color:rgba(242,101,34,0.3); }
+.wc img { width:100%;height:100%;object-fit:cover;transition:transform 0.6s; }
+.wc:hover img { transform:scale(1.06); }
+.wc-overlay {
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(13,13,13,0.95) 0%,rgba(13,13,13,0.1) 55%,transparent 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;padding:1.2rem;
+  opacity:0;transition:opacity 0.4s;
+}
+.wc:hover .wc-overlay { opacity:1; }
+.wc-play { position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:rgba(242,101,34,0.9);display:flex;align-items:center;justify-content:center;font-size:1rem;opacity:0;transition:opacity 0.4s;color:#000; }
+.wc:hover .wc-play { opacity:1; }
+.wc-name { font-family:'Raleway',sans-serif;font-weight:800;font-size:0.95rem; }
+.wc-cat { font-size:0.68rem;color:var(--orange);letter-spacing:1px;margin-top:0.2rem; }
+.wc { opacity:1; transform:none; }
+.wc.hidden { display:none !important; }
+
+/* Modal */
+.modal-bg {
+  position:fixed;inset:0;z-index:900;
+  background:rgba(13,13,13,0.95);backdrop-filter:blur(16px);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity 0.35s;
+}
+.modal-bg.open { opacity:1;pointer-events:all; }
+.modal {
+  background:var(--dark3);border:1px solid rgba(242,101,34,0.2);
+  border-radius:16px;padding:3rem;max-width:660px;width:90%;
+  transform:translateY(28px);transition:transform 0.4s;
+  position:relative;
+}
+.modal-bg.open .modal { transform:translateY(0); }
+.modal-close { position:absolute;top:1.2rem;right:1.2rem;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.06);border:none;color:var(--white);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.3s; }
+.modal-close:hover { background:rgba(242,101,34,0.2); }
+.modal-thumb { width:100%;aspect-ratio:16/9;border-radius:8px;overflow:hidden;margin-bottom:1.5rem;position:relative;cursor:pointer; }
+.modal-thumb img { width:100%;height:100%;object-fit:cover; }
+.modal-thumb::after { content:'▶';position:absolute;inset:0;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:var(--orange); display:flex; }
+.modal-cat { font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:0.6rem; }
+.modal-title { font-family:'Raleway',sans-serif;font-weight:900;font-size:2rem;margin-bottom:0.8rem; }
+.modal-desc { color:var(--gray);font-size:0.9rem;line-height:1.8;margin-bottom:1.5rem; }
+.modal-cta { display:flex;gap:1rem;flex-wrap:wrap; }
+
+/* ── BTS SECTION ── */
+.bts-section { background:var(--dark2);padding:6rem 4rem;border-top:1px solid rgba(255,255,255,0.04); }
+.bts-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem; }
+.bts-card { border-radius:10px;overflow:hidden;position:relative;aspect-ratio:4/3;cursor:pointer;background:var(--dark3); }
+.bts-card::before { content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(242,101,34,0.7),transparent 50%);opacity:0;transition:opacity 0.4s;z-index:1; }
+.bts-card:hover::before { opacity:1; }
+.bts-bg { width:100%;height:100%;object-fit:cover;transition:transform 0.6s; }
+.bts-card:hover .bts-bg { transform:scale(1.06); }
+.bts-label { position:absolute;bottom:1.5rem;left:1.5rem;z-index:2;font-family:'Raleway',sans-serif;font-weight:700;font-size:1.1rem;opacity:0;transition:opacity 0.4s;transform:translateY(8px);transition:all 0.4s; }
+.bts-card:hover .bts-label { opacity:1;transform:translateY(0); }
+.bts-play { position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;width:50px;height:50px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:1.2rem;opacity:0;transition:opacity 0.4s;color:#000; }
+.bts-card:hover .bts-play { opacity:1; }
+
+@media(max-width:1100px){ .work-grid{grid-template-columns:repeat(3,1fr);} }
+@media(max-width:900px){
+  .work-grid{grid-template-columns:repeat(2,1fr);}
+  .bts-grid{grid-template-columns:1fr 1fr;}
+  .filter-section,.work-main,.bts-section{padding-left:1.5rem;padding-right:1.5rem;}
+}
+
+/* ── ENHANCED CARD INTERACTIONS ── */
+.wc.tilt-card { cursor:pointer; }
+.wc.tilt-card:hover { box-shadow:0 30px 70px rgba(0,0,0,0.6), 0 0 0 1px rgba(242,101,34,0.3) !important; }
+.wc.tilt-card .wc-overlay { transition:opacity 0.35s, transform 0.35s cubic-bezier(0.34,1.56,0.64,1); transform:translateY(8px); }
+.wc.tilt-card:hover .wc-overlay { opacity:1; transform:translateY(0); }
+.wc.tilt-card .wc-play { transition:opacity 0.35s, transform 0.45s cubic-bezier(0.34,1.56,0.64,1); transform:translate(-50%,-50%) scale(0.7); }
+.wc.tilt-card:hover .wc-play { opacity:1; transform:translate(-50%,-50%) scale(1); }
+
+/* BTS card enhancement */
+.bts-card.tilt-card:hover { box-shadow:0 25px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(242,101,34,0.25); }
+.bts-card.tilt-card .bts-label { transition:opacity 0.4s, transform 0.45s cubic-bezier(0.34,1.56,0.64,1); }
+
+/* ── SECTION SPOTLIGHT (mouse move bg effect) ── */
+.spotlight-section {
+  position:relative; overflow:hidden;
+}
+.spotlight-section::after {
+  content:''; position:absolute; inset:0; pointer-events:none; z-index:0;
+  background:radial-gradient(
+    600px circle at var(--mx,50%) var(--my,50%),
+    rgba(242,101,34,0.07) 0%,
+    rgba(242,101,34,0.02) 40%,
+    transparent 70%
+  );
+  transition:background 0.1s;
+}
+.spotlight-section > * { position:relative; z-index:1; }
+</style>
+</head>
+<body>
+<div id="cursor"></div><div id="cursor-ring"></div>
+<a href="https://wa.me/919867409221" class="wa-float" target="_blank">💬</a>
+
+<div class="top-banner"><a href="https://www.youtube.com/watch?v=01hfHULpgbY" target="_blank">🎬 Watch our latest ad film teaser now! →</a></div>
+
+<div class="modal-bg" id="modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <!-- YouTube iframe embed -->
+    <div class="modal-video" id="m-video" style="display:none;">
+      <iframe id="m-iframe" width="100%" style="aspect-ratio:16/9;border-radius:8px;border:none;" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+    </div>
+    <!-- Thumbnail fallback (no YouTube URL) -->
+    <div class="modal-thumb" id="m-thumb" style="display:none;">
+      <img id="m-img" src="" alt="" loading="lazy">
+      <div style="position:absolute;inset:0;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:var(--orange);">▶</div>
+    </div>
+    <div class="modal-cat" id="m-cat" style="margin-top:1.2rem;"></div>
+    <div class="modal-title" id="m-title"></div>
+    <div class="modal-desc" id="m-desc"></div>
+    <div class="modal-cta">
+      <a id="m-yt" href="#" onclick="if(currentYTUrl&&currentYTUrl!=='#'){openYTModal(currentYTUrl);return false;}" class="btn-primary">▶ Watch Full Video</a>
+      <a href="contact.html" class="btn-outline">Start Similar Project</a>
+    </div>
+  </div>
+</div>
+
+<nav style="top:38px">
+  <a class="logo" href="index.html"><img src="images/ov-logo.png" alt="Orange Videos"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="work.html" class="active">Work</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Enquire Now</a>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- Mobile Nav Drawer -->
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="work.html" class="active">Work</a>
+  <a href="careers.html">Careers</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="mobile-nav-cta">Enquire Now</a>
+</div>
+
+<main>
+  <div class="page-hero orb-bg">
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><a href="index.html">Home</a> / Work</div>
+      <h1 class="page-h1">Videos That Tell <span class="hl">Powerful Brand Stories</span><br>Watch Our Work</h1>
+      <p class="page-sub">Explore our portfolio of high-impact videos — from corporate films to product showcases, animations, and photoshoots. Creativity, strategy, and excellence in every frame.</p>
+    </div>
+  </div>
+
+  <!-- FILTER -->
+  <div class="filter-section">
+    <!-- Tab switcher: Format / Industry / Duration -->
+    <div class="filter-tabs">
+      <button class="filter-tab active" onclick="switchTab(this,'format')">By Format</button>
+      <button class="filter-tab" onclick="switchTab(this,'industry')">By Industry</button>
+      <button class="filter-tab" onclick="switchTab(this,'duration')">By Duration</button>
+    </div>
+
+    <!-- FORMAT filter (default visible) -->
+    <div class="filter-bar-wrap">
+      <div class="filter-bar" id="filter-format">
+        <button class="fb active" onclick="filterWork(this,'all','format')"><span class="fb-icon">⬛</span><span>All</span></button>
+        <button class="fb" onclick="filterWork(this,'ad-film','format')"><span class="fb-icon">🎬</span><span>Ad Film</span></button>
+        <button class="fb" onclick="filterWork(this,'brand-film','format')"><span class="fb-icon">🏆</span><span>Brand Film</span></button>
+        <button class="fb" onclick="filterWork(this,'corporate','format')"><span class="fb-icon">🏢</span><span>Corporate</span></button>
+        <button class="fb" onclick="filterWork(this,'explainer','format')"><span class="fb-icon">💡</span><span>Explainer</span></button>
+        <button class="fb" onclick="filterWork(this,'animation','format')"><span class="fb-icon">✨</span><span>Animation</span></button>
+        <button class="fb" onclick="filterWork(this,'documentary','format')"><span class="fb-icon">🎥</span><span>Documentary</span></button>
+        <button class="fb" onclick="filterWork(this,'testimonial','format')"><span class="fb-icon">💬</span><span>Testimonial</span></button>
+        <button class="fb" onclick="filterWork(this,'product','format')"><span class="fb-icon">📦</span><span>Product</span></button>
+        <button class="fb" onclick="filterWork(this,'ai','format')"><span class="fb-icon">🤖</span><span>AI Video</span></button>
+      </div>
+
+      <!-- INDUSTRY filter (hidden by default) -->
+      <div class="filter-bar hidden" id="filter-industry">
+        <button class="fb active" onclick="filterWork(this,'all','industry')"><span>All Industries</span></button>
+        <button class="fb" onclick="filterWork(this,'ind-fmcg','industry')"><span class="fb-icon">🛒</span><span>FMCG & Retail</span></button>
+        <button class="fb" onclick="filterWork(this,'ind-bfsi','industry')"><span class="fb-icon">🏦</span><span>BFSI & Finance</span></button>
+        <button class="fb" onclick="filterWork(this,'ind-tech','industry')"><span class="fb-icon">💻</span><span>Tech & SaaS</span></button>
+        <button class="fb" onclick="filterWork(this,'ind-manufacturing','industry')"><span class="fb-icon">⚙️</span><span>Manufacturing</span></button>
+        <button class="fb" onclick="filterWork(this,'ind-education','industry')"><span class="fb-icon">🎓</span><span>Education</span></button>
+        <button class="fb" onclick="filterWork(this,'ind-healthcare','industry')"><span class="fb-icon">🏥</span><span>Healthcare</span></button>
+        <button class="fb" onclick="filterWork(this,'ind-fashion','industry')"><span class="fb-icon">👗</span><span>Fashion & Lifestyle</span></button>
+        <button class="fb" onclick="filterWork(this,'ind-ngo','industry')"><span class="fb-icon">🌱</span><span>NGO & Social Impact</span></button>
+      </div>
+
+      <!-- DURATION filter (hidden by default) -->
+      <div class="filter-bar hidden" id="filter-duration">
+        <button class="fb active" onclick="filterWork(this,'all','duration')"><span>Any Length</span></button>
+        <button class="fb" onclick="filterWork(this,'dur-short','duration')"><span class="fb-icon">⚡</span><span>Under 60s</span></button>
+        <button class="fb" onclick="filterWork(this,'dur-mid','duration')"><span class="fb-icon">▶</span><span>1 – 3 min</span></button>
+        <button class="fb" onclick="filterWork(this,'dur-long','duration')"><span class="fb-icon">🎞</span><span>3+ min</span></button>
+      </div>
+    </div>
+
+    <div class="filter-meta">Showing <span id="filter-count">all</span> projects</div>
+    <div class="active-filters" id="active-filters"></div>
+  </div>
+
+  <!-- WORK GRID -->
+  <section class="work-main spotlight-section">
+    <div class="work-grid" id="work-grid">
+      <!-- AD FILMS -->
+      <div class="wc tilt-card" data-ind="ind-fashion" data-dur="dur-short" data-cat="ad-film" onclick="openModal('Ad Film','iwuman – Women\'s Apparel','https://www.orangevideos.in/assets/images/home/our-work/iwuman.png','A vibrant and emotionally charged ad film for iwuman, capturing the spirit of modern Indian women through powerful storytelling and stunning visuals.','https://www.youtube.com/watch?v=ck2QJt35csY')">
+        <img src="https://www.orangevideos.in/assets/images/home/our-work/iwuman.png" alt="iwuman" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="wc-play">▶</div>
+        <div class="wc-overlay"><div class="wc-name">iwuman</div><div class="wc-cat">Women's Apparel · Ad Film</div></div>
+      </div>
+      <div class="wc tilt-card" data-ind="ind-fmcg" data-dur="dur-short" data-cat="ad-film" onclick="openModal('Ad Film','Nilkamal Homes – Furnishing & Decor','https://www.orangevideos.in/assets/images/digital-ads/our-work/img-1.webp','Short-form social ad content for Nilkamal Homes, showcasing their furniture range with warmth, elegance, and lifestyle appeal.','#')">
+        <img src="https://www.orangevideos.in/assets/images/digital-ads/our-work/img-1.webp" alt="Nilkamal" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="wc-play">▶</div>
+        <div class="wc-overlay"><div class="wc-name">Nilkamal Homes</div><div class="wc-cat">Furnishing & Decor · Short Form Content</div></div>
+      </div>
+      <div class="wc tilt-card" data-ind="ind-ngo" data-dur="dur-mid" data-cat="brand-film" onclick="openModal('Social Impact AV','Futuready Media','https://www.orangevideos.in/assets/images/home/our-work/futuready.png','A social impact audiovisual piece for Futuready Media that blends storytelling and activism to spark meaningful conversations about change.','https://www.youtube.com/watch?v=gNUomN23puE')">
+        <img src="https://www.orangevideos.in/assets/images/home/our-work/futuready.png" alt="Futuready" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="wc-play">▶</div>
+        <div class="wc-overlay"><div class="wc-name">Futuready Media</div><div class="wc-cat">Media Agency · Social Impact AV</div></div>
+      </div>
+      <div class="wc tilt-card" data-ind="ind-education" data-dur="dur-mid" data-cat="brand-film" onclick="openModal('Brand Film','Tic-Tac-Toe Educational Institute','https://www.orangevideos.in/assets/images/home/our-work/tic-tac-toe.png','A heartwarming brand film for an educational institute, celebrating the joy of learning and the bonds formed in the classroom.','https://www.youtube.com/watch?v=b2pDgOLUrmU')">
+        <img src="https://www.orangevideos.in/assets/images/home/our-work/tic-tac-toe.png" alt="Tic-Tac-Toe" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="wc-play">▶</div>
+        <div class="wc-overlay"><div class="wc-name">Tic-Tac-Toe</div><div class="wc-cat">Education · Brand Film</div></div>
+      </div>
+      <!-- CORPORATE -->
+      <div class="wc tilt-card" data-ind="ind-tech" data-dur="dur-mid" data-cat="corporate" onclick="openModal('Corporate Video','Entropik – Research & Consulting','https://www.orangevideos.in/assets/images/home/our-work/entropik.png','A sleek corporate video for Entropik, showcasing their market research and consumer insights capabilities to enterprise clients.','https://www.youtube.com/watch?v=BLHUYNRv6LY')">
+        <img src="https://www.orangevideos.in/assets/images/home/our-work/entropik.png" alt="Entropik" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="wc-play">▶</div>
+        <div class="wc-overlay"><div class="wc-name">Entropik</div><div class="wc-cat">Research & Consulting · Corporate Video</div></div>
+      </div>
+      <div class="wc tilt-card" data-ind="ind-manufacturing" data-dur="dur-mid" data-cat="corporate" onclick="openModal('Corporate Video','Mentco – Manufacturing','https://www.orangevideos.in/assets/images/home/our-work/mentco.png','An industrial corporate video for Mentco, highlighting their manufacturing excellence, workforce, and state-of-the-art facility.','https://www.youtube.com/watch?v=LRJI-4Z1Dx4')">
+        <img src="https://www.orangevideos.in/assets/images/home/our-work/mentco.png" alt="Mentco" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="wc-play">▶</div>
+        <div class="wc-overlay"><div class="wc-name">Mentco</div><div class="wc-cat">Manufacturing · Corporate Video</div></div>
+      </div>
+      <div class="wc tilt-card" data-ind="ind-bfsi" data-dur="dur-mid" data-cat="corporate" onclick="openModal('Corporate Video','Baring – Private Equity','https://www.orangevideos.in/assets/images/corporate-lp/our-work/thumb-2.jpg','A prestigious corporate film for Baring Private Equity Partners India, featuring CXO interviews and their investment philosophy.','#')">
+        <img src="https://www.orangevideos.in/assets/images/corporate-lp/our-work/thumb-2.jpg" alt="Baring" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="wc-play">▶</div>
+        <div class="wc-overlay"><div class="wc-name">Baring</div><div class="wc-cat">Private Equity · Corporate Video</div></div>
+      </div>
+      <!-- PRODUCT -->
+      <div class="wc tilt-card" data-ind="ind-fmcg" data-dur="dur-short" data-cat="product" onclick="openModal('Product Video','Zero B – Water Purifier','https://www.orangevideos.in/assets/images/home/our-work/zero-b.png','A cinematic product video for Zero B, highlighting their water purification technology through stunning macro photography and clean visual storytelling.','https://www.youtube.com/watch?v=4mWLLwyyRvQ')">
+        <img src="https://www.orangevideos.in/assets/images/home/our-work/zero-b.png" alt="Zero B" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="wc-play">▶</div>
+        <div class="wc-overlay"><div class="wc-name">Zero B</div><div class="wc-cat">Water Purifier · Product Video</div></div>
+      </div>
+      <!-- EXPLAINER -->
+      <div class="wc tilt-card" data-ind="ind-healthcare" data-dur="dur-mid" data-cat="explainer" onclick="openModal('Explainer Video','India Glycol – Biotech','https://www.orangevideos.in/assets/images/home/our-work/xanthogreen.png','An animated explainer video for India Glycol breaking down complex biotech processes into clear, compelling visual content.','https://youtu.be/D5StpzprCfU')">
+        <img src="https://www.orangevideos.in/assets/images/home/our-work/xanthogreen.png" alt="India Glycol" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="wc-play">▶</div>
+        <div class="wc-overlay"><div class="wc-name">India Glycol</div><div class="wc-cat">Biotech · Explainer Video</div></div>
+      </div>
+      <div class="wc tilt-card" data-ind="ind-manufacturing" data-dur="dur-mid" data-cat="explainer" onclick="openModal('Explainer Video','Idex Corp – Engineering','https://www.orangevideos.in/assets/images/animation-explainer/our-work/img-2.webp','A precision 3D product explainer for Idex Corp, showcasing their engineering components with photorealistic animation.','https://youtu.be/JYx35vDL4i4')">
+        <img src="https://www.orangevideos.in/assets/images/animation-explainer/our-work/img-2.webp" alt="Idex" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="wc-play">▶</div>
+        <div class="wc-overlay"><div class="wc-name">Idex Corp</div><div class="wc-cat">Engineering · 3D Product Video</div></div>
+      </div>
+      <div class="wc tilt-card" data-ind="ind-fmcg" data-dur="dur-short" data-cat="explainer" onclick="openModal('App Explainer','EatSure – App Explainer','https://www.orangevideos.in/assets/images/explainer-videos/EatSure.png','A fun, fast-paced app explainer for EatSure showing users exactly how to order from multiple restaurant brands in one order.','#')">
+        <img src="https://www.orangevideos.in/assets/images/explainer-videos/EatSure.png" alt="EatSure" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="wc-play">▶</div>
+        <div class="wc-overlay"><div class="wc-name">EatSure</div><div class="wc-cat">Food App · App Explainer</div></div>
+      </div>
+      <!-- ANIMATION -->
+      <div class="wc tilt-card" data-ind="ind-fmcg" data-dur="dur-short" data-cat="animation" onclick="openModal('3D Animation','Häfele – Furniture Hardware','https://www.orangevideos.in/assets/images/3d-animation-videos/hafele-3d.webp','A photorealistic 3D animation for Häfele, demonstrating the precision and elegance of their furniture fittings and hardware solutions.','#')">
+        <img src="https://www.orangevideos.in/assets/images/3d-animation-videos/hafele-3d.webp" alt="Hafele" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="wc-play">▶</div>
+        <div class="wc-overlay"><div class="wc-name">Häfele</div><div class="wc-cat">Furniture Hardware · 3D Animation</div></div>
+      </div>
+      <div class="wc tilt-card" data-ind="ind-manufacturing" data-dur="dur-mid" data-cat="animation" onclick="openModal('2D Animation','Coats – Thread Manufacturing','https://www.orangevideos.in/assets/images/animation-explainer/our-work/img-12.png','A detailed 2D + 3D hybrid animation for Coats explaining their global thread manufacturing process to B2B clients.','#')">
+        <img src="https://www.orangevideos.in/assets/images/animation-explainer/our-work/img-12.png" alt="Coats" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="wc-play">▶</div>
+        <div class="wc-overlay"><div class="wc-name">Coats</div><div class="wc-cat">Manufacturing · 2D + 3D Animation</div></div>
+      </div>
+      <!-- DOCUMENTARY -->
+      <div class="wc tilt-card" data-ind="ind-ngo" data-dur="dur-long" data-cat="documentary" onclick="openModal('Documentary','ICARDA – Agri Research Success Story','https://www.orangevideos.in/assets/images/documentary-films/our-work/ICARDA.webp','A documentary success story for ICARDA, capturing the real-world impact of their agricultural research across rural communities.','https://www.youtube.com/watch?v=qDKYL6dpogo')">
+        <img src="https://www.orangevideos.in/assets/images/documentary-films/our-work/ICARDA.webp" alt="ICARDA" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="wc-play">▶</div>
+        <div class="wc-overlay"><div class="wc-name">ICARDA</div><div class="wc-cat">Agri Research · Documentary</div></div>
+      </div>
+      <div class="wc tilt-card" data-ind="ind-manufacturing" data-dur="dur-long" data-cat="documentary" onclick="openModal('Documentary','Hapag-Lloyd – Innovation Story','https://www.orangevideos.in/assets/images/documentary-films/our-work/hapag-lloyd.png','An innovation documentary for Hapag-Lloyd, one of the world\'s largest shipping companies, shot across multiple international locations.','#')">
+        <img src="https://www.orangevideos.in/assets/images/documentary-films/our-work/hapag-lloyd.png" alt="Hapag Lloyd" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="wc-play">▶</div>
+        <div class="wc-overlay"><div class="wc-name">Hapag-Lloyd</div><div class="wc-cat">Shipping · Innovation Story</div></div>
+      </div>
+      <!-- TESTIMONIAL -->
+      <div class="wc tilt-card" data-ind="ind-bfsi" data-dur="dur-short" data-cat="testimonial" onclick="openModal('Testimonial Video','Tata AIG – Insurance','https://www.orangevideos.in/assets/images/home/our-work/tata-aig.png','A series of testimonial videos for Tata AIG Insurance, capturing real customer stories and the peace of mind their coverage brings.','https://www.youtube.com/watch?v=PNbYSYVCsIg')">
+        <img src="https://www.orangevideos.in/assets/images/home/our-work/tata-aig.png" alt="Tata AIG" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="wc-play">▶</div>
+        <div class="wc-overlay"><div class="wc-name">Tata AIG</div><div class="wc-cat">Insurance · Testimonial</div></div>
+      </div>
+      <div class="wc tilt-card" data-ind="ind-bfsi" data-dur="dur-long" data-cat="testimonial" onclick="openModal('Video Podcast','D&B – Research & Analytics','https://www.orangevideos.in/assets/images/home/our-work/D&B.png','A multi-episode video podcast series for Dun & Bradstreet, featuring industry leaders discussing data analytics and business intelligence.','https://www.youtube.com/watch?v=0tXk7HZEFEw')">
+        <img src="https://www.orangevideos.in/assets/images/home/our-work/D&B.png" alt="D&B" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="wc-play">▶</div>
+        <div class="wc-overlay"><div class="wc-name">D&B</div><div class="wc-cat">Research & Analytics · Video Podcast</div></div>
+      </div>
+      <!-- AI -->
+      <div class="wc tilt-card" data-ind="ind-tech" data-dur="dur-short" data-cat="ai" onclick="openModal('AI Video','Hiranandani – Real Estate','https://www.orangevideos.in/assets/images/ai-videos/our-work/ai-video-ow-thumbnail-1.jpg','A cutting-edge AI-generated video for Hiranandani Real Estate, showcasing luxury residential properties through synthetic media and generative AI visuals.','#')">
+        <img src="https://www.orangevideos.in/assets/images/ai-videos/our-work/ai-video-ow-thumbnail-1.jpg" alt="Hiranandani" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="wc-play">▶</div>
+        <div class="wc-overlay"><div class="wc-name">Hiranandani</div><div class="wc-cat">Real Estate · AI Video</div></div>
+      </div>
+      <div class="wc tilt-card" data-ind="ind-tech" data-dur="dur-short" data-cat="ai" onclick="openModal('AI Video','Fevicol – AI Brand Campaign','https://www.orangevideos.in/assets/images/ai-videos/our-work/ai-video-ow-thumbnail-3.jpg','An experimental AI video campaign for Fevicol combining generative AI imagery with their iconic brand humor and storytelling.','#')">
+        <img src="https://www.orangevideos.in/assets/images/ai-videos/our-work/ai-video-ow-thumbnail-3.jpg" alt="Fevicol" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"><div class="wc-play">▶</div>
+        <div class="wc-overlay"><div class="wc-name">Fevicol</div><div class="wc-cat">FMCG · AI Brand Campaign</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BTS -->
+  <section class="bts-section spotlight-section">
+    <div class="section-label reveal">Behind the Scenes</div>
+    <h2 class="section-title reveal-3d">Step Into the Making of Our <span class="hl">Ad Films</span></h2>
+    <div class="bts-grid">
+      <div class="bts-card reveal" onclick="openYTModal('https://www.youtube.com/@orangevideos')">
+        <img class="bts-bg" src="https://www.orangevideos.in/assets/images/home/our-work/mentco.png" alt="Mentco BTS" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;">
+        <div class="bts-play">▶</div>
+        <div class="bts-label">Mentco</div>
+      </div>
+      <div class="bts-card reveal" onclick="openYTModal('https://www.youtube.com/@orangevideos')">
+        <img class="bts-bg" src="https://www.orangevideos.in/assets/images/home/our-work/zero-b.png" alt="Zero B BTS" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;">
+        <div class="bts-play">▶</div>
+        <div class="bts-label">Zero B</div>
+      </div>
+      <div class="bts-card reveal" onclick="openYTModal('https://www.youtube.com/@orangevideos')">
+        <img class="bts-bg" src="https://www.orangevideos.in/assets/images/home/our-work/entropik.png" alt="Entropik BTS" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;">
+        <div class="bts-play">▶</div>
+        <div class="bts-label">Entropik</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-strip reveal orb-bg" id="get-in-touch">
+    <h2>Ready to Elevate Your Brand <span class="hl">with Video Content?</span></h2>
+    <p>Have a project in mind? Share your vision, and we'll craft a compelling video that brings it to life.</p>
+    <a href="contact.html" class="btn-primary">Get in Touch →</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand"><a class="footer-logo" href="index.html"><img src="images/ov-logo.png" alt="Orange Videos"></a><p>India's leading ad film production agency helping brands turn their vision into reality through dynamic video content.</p><div class="footer-social">
+  <a class="f-soc" href="https://www.youtube.com/@OrangeVideos" target="_blank" aria-label="YouTube" title="YouTube">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+  </a>
+  <a class="f-soc" href="https://www.instagram.com/orangevideos.in/" target="_blank" aria-label="Instagram" title="Instagram">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+  </a>
+  <a class="f-soc" href="https://www.linkedin.com/company/orangevideos/" target="_blank" aria-label="LinkedIn" title="LinkedIn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+  </a>
+  <a class="f-soc" href="https://www.facebook.com/orangevideos.in/" target="_blank" aria-label="Facebook" title="Facebook">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+  </a>
+</div></div>
+    <div class="footer-col"><h4>Main</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="work.html">Work</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><h4>Services</h4><a href="service-ad-films.html">Ad Films</a><a href="service-brand-films.html">Brand Films</a><a href="service-corporate-video.html">Corporate Videos</a><a href="service-explainer-videos.html">Explainer Videos</a><a href="service-3d-animation.html">3D Animation Videos</a><a href="service-ai-videos.html">AI Videos</a></div>
+    <div class="footer-col"><h4>Contact</h4><strong>Mumbai</strong><p>102, Kaatyayani Business Center, Off Mahakali Caves Road, MIDC, Andheri East, Mumbai – 400093</p><a href="tel:+919867409221" style="color:var(--orange);margin-top:1rem;">+91 98674 09221</a><a href="mailto:sales@orangevideos.in" style="color:var(--orange);">sales@orangevideos.in</a></div>
+  </div>
+  <div class="footer-bottom"><span>© copyright 2026 · Orange Videos Production LLP</span><span>Mumbai · Bangalore · UAE</span></div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+// ── MULTI-DIMENSION FILTER SYSTEM ───────────────────────────────────
+var activeFilters = { format:'all', industry:'all', duration:'all' };
+var currentDimension = 'format';
+
+function switchTab(btn, dimension) {
+  currentDimension = dimension;
+  document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
+  btn.classList.add('active');
+  ['format','industry','duration'].forEach(function(d) {
+    var bar = document.getElementById('filter-' + d);
+    if (bar) {
+      if (d === dimension) {
+        bar.classList.remove('hidden');
+        bar.style.animation = 'filterFadeIn 0.3s ease';
+      } else {
+        bar.classList.add('hidden');
+      }
+    }
+  });
+}
+
+function filterWork(btn, value, dimension) {
+  // Determine which dimension this button belongs to
+  var dim = dimension || currentDimension || 'format';
+  // Clear active only within this bar
+  var bar = document.getElementById('filter-' + dim);
+  if (bar) {
+    bar.querySelectorAll('.fb').forEach(function(b) { b.classList.remove('active'); });
+  }
+  btn.classList.add('active');
+  activeFilters[dim] = value;
+  applyFilters();
+}
+
+function applyFilters() {
+  var cards = document.querySelectorAll('.wc');
+  var visible = 0;
+  // First pass: hide/show
+  cards.forEach(function(c) {
+    var catOk = activeFilters.format === 'all' || c.dataset.cat === activeFilters.format;
+    var indOk = activeFilters.industry === 'all' || c.dataset.ind === activeFilters.industry;
+    var durOk = activeFilters.duration === 'all' || c.dataset.dur === activeFilters.duration;
+    if (catOk && indOk && durOk) {
+      c.classList.remove('hidden');
+      visible++;
+    } else {
+      c.classList.add('hidden');
+    }
+  });
+  // Second pass: animate visible cards in with stagger
+  var idx = 0;
+  cards.forEach(function(c) {
+    if (!c.classList.contains('hidden')) {
+      var d = idx * 45;
+      c.style.opacity = '0';
+      c.style.transform = 'translateY(16px) scale(0.97)';
+      c.style.transition = 'none';
+      ;(function(card, delay) {
+        requestAnimationFrame(function() {
+          setTimeout(function() {
+            card.style.transition = 'opacity 0.4s ease ' + delay + 'ms, transform 0.4s cubic-bezier(0.34,1.56,0.64,1) ' + delay + 'ms';
+            card.style.opacity = '1';
+            card.style.transform = '';
+          }, 16);
+        });
+      })(c, d);
+      idx++;
+    }
+  });
+  // Update count
+  var meta = document.getElementById('filter-count');
+  if (meta) {
+    var total = cards.length;
+    meta.textContent = visible === total ? 'all' : visible;
+  }
+  updateActiveTags();
+}
+
+function updateActiveTags() {
+  var container = document.getElementById('active-filters');
+  if (!container) return;
+  container.innerHTML = '';
+  ['format','industry','duration'].forEach(function(dim) {
+    var val = activeFilters[dim];
+    if (val === 'all') return;
+    var bar = document.getElementById('filter-' + dim);
+    var activeBtn = bar ? bar.querySelector('.fb.active') : null;
+    var labelEl = activeBtn ? activeBtn.querySelector('span:last-child') : null;
+    var label = labelEl ? labelEl.textContent : val;
+    var tag = document.createElement('div');
+    tag.className = 'af-tag';
+    tag.innerHTML = '<span>' + label + '</span><span class="af-remove" onclick="clearFilter(\'' + dim + '\')">✕</span>';
+    container.appendChild(tag);
+  });
+}
+
+function clearFilter(dimension) {
+  activeFilters[dimension] = 'all';
+  var bar = document.getElementById('filter-' + dimension);
+  if (bar) {
+    bar.querySelectorAll('.fb').forEach(function(b) { b.classList.remove('active'); });
+    var allBtn = bar.querySelector('.fb:first-child');
+    if (allBtn) allBtn.classList.add('active');
+  }
+  applyFilters();
+}
+
+// ── YOUTUBE EMBED HELPER ─────────────────────────────────────────────
+function getYTEmbedId(url) {
+  if (!url || url === '#') return null;
+  const m = url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  return m ? m[1] : null;
+}
+
+// ── MODAL ─────────────────────────────────────────────────────────────
+let currentYTUrl = '#';
+
+function openModal(cat, title, img, desc, yt) {
+  document.getElementById('m-cat').textContent  = cat;
+  document.getElementById('m-title').textContent = title;
+  document.getElementById('m-desc').textContent  = desc;
+  document.getElementById('m-yt').href           = yt;
+  currentYTUrl = yt;
+
+  const videoDiv = document.getElementById('m-video');
+  const thumbDiv = document.getElementById('m-thumb');
+  const iframe   = document.getElementById('m-iframe');
+  const ytId     = getYTEmbedId(yt);
+
+  if (ytId) {
+    iframe.src = 'https://www.youtube.com/embed/' + ytId + '?autoplay=1&rel=0';
+    videoDiv.style.display = 'block';
+    thumbDiv.style.display = 'none';
+  } else {
+    document.getElementById('m-img').src = img;
+    videoDiv.style.display = 'none';
+    thumbDiv.style.display = 'block';
+  }
+
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow = '';
+  // Stop video
+  const iframe = document.getElementById('m-iframe');
+  iframe.src = '';
+}
+
+document.getElementById('modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('modal')) closeModal();
+});
+
+// ── Entrance animation handled by CSS reveal classes ──
+
+// ── NAV SCROLL ────────────────────────────────────────────────────────
+document.querySelector('nav').style.top = '38px';
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.top = window.scrollY > 100 ? '0' : '38px';
+});
+</script>
+
+<!-- ── GLOBAL YOUTUBE MODAL ── -->
+<div id="yt-modal-bg" style="display:none;position:fixed;inset:0;z-index:9500;background:rgba(10,10,10,0.92);backdrop-filter:blur(18px);align-items:center;justify-content:center;padding:1rem;">
+  <div id="yt-modal-box" style="position:relative;width:100%;max-width:900px;border-radius:12px;overflow:hidden;border:1px solid rgba(242,101,34,0.25);box-shadow:0 40px 100px rgba(0,0,0,0.7);">
+    <button onclick="closeYTModal()" style="position:absolute;top:0.8rem;right:0.8rem;z-index:2;width:36px;height:36px;border-radius:50%;background:rgba(242,101,34,0.9);border:none;color:#000;font-size:1rem;cursor:pointer;font-weight:900;line-height:1;display:flex;align-items:center;justify-content:center;">✕</button>
+    <iframe id="yt-modal-iframe" width="100%" style="aspect-ratio:16/9;border:none;display:block;" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture" src=""></iframe>
+  </div>
+</div>
+
+<script>
+// ── GLOBAL YT MODAL ────────────────────────────────────────────────────
+function getYTId(url){
+  if(!url||url==='#') return null;
+  var m=url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  return m?m[1]:null;
+}
+function openYTModal(url){
+  var id=getYTId(url);
+  if(!id){ window.open(url,'_blank'); return; }
+  var bg=document.getElementById('yt-modal-bg');
+  document.getElementById('yt-modal-iframe').src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0';
+  bg.style.display='flex';
+  document.body.style.overflow='hidden';
+}
+function closeYTModal(){
+  var bg=document.getElementById('yt-modal-bg');
+  bg.style.display='none';
+  document.getElementById('yt-modal-iframe').src='';
+  document.body.style.overflow='';
+}
+document.getElementById('yt-modal-bg').addEventListener('click',function(e){
+  if(e.target===this) closeYTModal();
+});
+// Make all mw-card and bts-card with YT links open in modal
+document.querySelectorAll('.mw-card[onclick], .bts-card[onclick]').forEach(function(el){
+  var oc=el.getAttribute('onclick')||'';
+  var m=oc.match(/window\.open\(['"]([^'"]+)['"]/);
+  if(m&&m[1]&&m[1]!=='#'&&m[1].includes('youtu')){
+    el.setAttribute('onclick',"openYTModal('"+m[1]+"')");
+  }
+});
+// Showreel play buttons (class showreel-thumb, play-btn-lg)
+document.querySelectorAll('.showreel-thumb, .showreel-mini-thumb').forEach(function(el){
+  var oc=el.getAttribute('onclick')||'';
+  var m=oc.match(/window\.open\(['"]([^'"]+)['"]/);
+  if(m&&m[1]) { el.setAttribute('onclick',"openYTModal('"+m[1]+"')"); }
+});
+</script>
+
+<script>
+// ── SECTION SPOTLIGHT BG EFFECT ──
+document.querySelectorAll('.spotlight-section').forEach(function(section) {
+  section.addEventListener('mousemove', function(e) {
+    var r  = section.getBoundingClientRect();
+    var mx = ((e.clientX - r.left) / r.width  * 100).toFixed(2);
+    var my = ((e.clientY - r.top)  / r.height * 100).toFixed(2);
+    section.style.setProperty('--mx', mx + '%');
+    section.style.setProperty('--my', my + '%');
+  });
+});
+</script>
+</body>
+</html>

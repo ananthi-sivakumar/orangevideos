@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Podcast Production Studio in Mumbai – Orange Videos</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ── SERVICE FEATURES ── */
+.feat-section { padding:6rem 4rem; background:var(--dark); }
+.feat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3.5rem; }
+.feat-card {
+  background:var(--dark3); border:1px solid rgba(242,101,34,0.1);
+  border-radius:10px; padding:2rem;
+  display:flex; align-items:flex-start; gap:1.2rem;
+  transition:all 0.4s; position:relative; overflow:hidden;
+}
+.feat-card::after { content:''; position:absolute; bottom:0; left:0; width:0; height:2px; background:var(--orange); transition:width 0.4s; }
+.feat-card:hover { border-color:rgba(242,101,34,0.35); transform:translateY(-5px); box-shadow:0 20px 50px rgba(0,0,0,0.4); }
+.feat-card:hover::after { width:100%; }
+.feat-icon { font-size:1.8rem; flex-shrink:0; width:52px; height:52px; background:rgba(242,101,34,0.08); border-radius:10px; display:flex; align-items:center; justify-content:center; }
+.feat-title { font-family:'Raleway',sans-serif; font-weight:800; font-size:1rem; margin-bottom:0.4rem; }
+.feat-desc { color:var(--gray); font-size:0.84rem; line-height:1.7; }
+
+/* ── INTRO SECTION ── */
+.intro-section { padding:6rem 4rem; background:var(--dark2); }
+.intro-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; margin-top:3rem; }
+.intro-img { border-radius:12px; overflow:hidden; position:relative; }
+.intro-img img { width:100%; display:block; border-radius:12px; }
+.intro-img::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(242,101,34,0.2),transparent 60%); z-index:1; border-radius:12px; }
+.intro-badge { position:absolute; bottom:1.5rem; right:1.5rem; z-index:2; background:var(--orange); color:#000; padding:0.7rem 1.2rem; border-radius:6px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.75rem; letter-spacing:1px; }
+.intro-text p { color:var(--gray); line-height:1.9; font-size:0.95rem; margin-top:1.5rem; }
+
+/* ── PROCESS ── */
+.process-section { padding:6rem 4rem; background:var(--dark); }
+.process-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3.5rem; }
+.proc-card {
+  background:var(--dark3); border:1px solid rgba(255,255,255,0.06);
+  border-radius:10px; padding:2.2rem; position:relative; overflow:hidden;
+  transition:all 0.4s;
+}
+.proc-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--orange); transform:scaleX(0); transition:transform 0.4s; }
+.proc-card:hover { border-color:rgba(242,101,34,0.3); transform:translateY(-5px); }
+.proc-card:hover::before { transform:scaleX(1); }
+.proc-num { font-family:'Raleway',sans-serif; font-weight:900; font-size:2.8rem; color:rgba(242,101,34,0.12); line-height:1; margin-bottom:0.6rem; }
+.proc-title { font-family:'Raleway',sans-serif; font-weight:800; font-size:1.05rem; margin-bottom:0.5rem; }
+.proc-desc { color:var(--gray); font-size:0.84rem; line-height:1.7; }
+
+/* ── MINI WORK ── */
+.mini-work-section { padding:6rem 4rem; background:var(--dark2); }
+.mini-work-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3rem; }
+.mw-card { border-radius:10px; overflow:hidden; position:relative; aspect-ratio:16/10; cursor:pointer; background:var(--dark3); transition:all 0.4s; }
+.mw-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(0,0,0,0.5); }
+.mw-card img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s; }
+.mw-card:hover img { transform:scale(1.06); }
+.mw-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(13,13,13,0.92),transparent 55%); display:flex; flex-direction:column; justify-content:flex-end; padding:1.2rem; opacity:0; transition:opacity 0.4s; }
+.mw-card:hover .mw-overlay { opacity:1; }
+.mw-play { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:44px; height:44px; border-radius:50%; background:var(--orange); display:flex; align-items:center; justify-content:center; font-size:1rem; color:#000; opacity:0; transition:opacity 0.4s; }
+.mw-card:hover .mw-play { opacity:1; }
+.mw-name { font-family:'Raleway',sans-serif; font-weight:800; font-size:0.95rem; }
+.mw-cat { font-size:0.7rem; color:var(--orange); letter-spacing:1px; margin-top:0.2rem; }
+
+.faq-item::before {
+  content:''; position:absolute; left:0; top:0; bottom:0; width:3px;
+  background:var(--grad); transform:scaleY(0); transform-origin:bottom;
+  transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.faq-item.open::before { transform:scaleY(1); }
+.faq-item:first-child { border-top:1px solid rgba(255,255,255,0.07); }
+.faq-q:hover { color:var(--orange); }
+.faq-item.open .faq-item.open .faq-item.open .faq-item.open /* ── STATS ── */
+.stat-n { font-family:'Raleway',sans-serif;font-weight:900;font-size:3rem;color:var(--orange);line-height:1; }
+.stat-l { font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);margin-top:0.4rem; }
+
+@media(max-width:1100px){ .feat-grid,.process-grid{ grid-template-columns:repeat(2,1fr); } }
+@media(max-width:900px){
+  .feat-grid,.process-grid,.mini-work-grid,.intro-grid{ grid-template-columns:1fr; gap:2.5rem; }
+  .feat-section,.intro-section,.process-section,.mini-work-section,}
+
+/* ── SECTION SPOTLIGHT (mouse move bg effect) ── */
+.spotlight-section {
+  position:relative; overflow:hidden;
+}
+.spotlight-section::after {
+  content:''; position:absolute; inset:0; pointer-events:none; z-index:0;
+  background:radial-gradient(
+    600px circle at var(--mx,50%) var(--my,50%),
+    rgba(242,101,34,0.07) 0%,
+    rgba(242,101,34,0.02) 40%,
+    transparent 70%
+  );
+  transition:background 0.1s;
+}
+.spotlight-section > * { position:relative; z-index:1; }
+</style>
+</head>
+<body>
+<div id="cursor"></div><div id="cursor-ring"></div>
+<a href="https://wa.me/919867409221" class="wa-float" target="_blank">💬</a>
+
+<div class="top-banner"><a href="https://www.youtube.com/watch?v=01hfHULpgbY" target="_blank">🎬 Watch our latest ad film teaser now! →</a></div>
+
+<nav style="top:38px">
+  <a class="logo" href="index.html"><img src="images/ov-logo.png" alt="Orange Videos"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Enquire Now</a>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- Mobile Nav Drawer -->
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="work.html">Work</a>
+  <a href="careers.html">Careers</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="mobile-nav-cta">Enquire Now</a>
+</div>
+
+<main>
+  <!-- PAGE HERO -->
+  <div class="page-hero orb-bg" style="background-image:none;position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:url('https://www.orangevideos.in/assets/images/home/discover-our-expertise/podcast-video.webp') center/cover;opacity:0.12;"></div>
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(242,101,34,0.1) 0%,transparent 65%);"></div>
+    <div class="page-hero-inner" style="position:relative;z-index:1;">
+      <div class="breadcrumb"><a href="index.html">Home</a> / <a href="services.html">Services</a> / Video Podcast</div>
+      <div class="section-label" style="margin-bottom:1.5rem;">Video Podcast Studio</div>
+      <h1 class="page-h1">Professional <span class='hl'>Video Podcast Production</span><br>That Builds Authority</h1>
+      <p class="page-sub" style="margin-top:1.2rem;">Studio-quality video podcast production for thought leaders, CEOs, brand channels, and media companies — capturing conversations that build audiences and establish authority.</p>
+      <div style="display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;">
+        <a href="contact.html" class="btn-primary">Start Your Project →</a>
+        <a href="work.html" class="btn-outline">View Our Work</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar spotlight-section">
+    <div class="stat-box reveal-scale"><div class="stat-n" data-t="13" data-s="+">0+</div><div class="stat-l">Years Experience</div></div>
+    <div class="stat-box reveal-scale"><div class="stat-n" data-t="1000" data-s="+">0+</div><div class="stat-l">Projects Delivered</div></div>
+    <div class="stat-box reveal-scale"><div class="stat-n" data-t="600" data-s="+">0+</div><div class="stat-l">Happy Clients</div></div>
+    <div class="stat-box reveal-scale"><div class="stat-n" data-t="12" data-s="">0</div><div class="stat-l">Countries Served</div></div>
+    <div class="stat-box reveal-scale"><div class="stat-n" data-t="70" data-s="+">0+</div><div class="stat-l">Creative Minds</div></div>
+  </div>
+
+  <!-- INTRO -->
+  <section class="intro-section spotlight-section">
+    <div class="intro-grid">
+      <div class="intro-text reveal-left">
+        <div class="section-label reveal">Video Podcast Power</div>
+        <h2 class="section-title reveal-3d">Your Ideas Deserve a <span class='hl'>Stage-Quality Studio</span></h2>
+        <div class="orange-line reveal"></div>
+        <p class="reveal">Video podcasts are the fastest-growing content format for B2B brands, founders, and thought leaders. Orange Videos provides end-to-end video podcast production — from studio setup and multi-camera recording to editing, thumbnail design, and distribution across YouTube, Spotify, and Apple Podcasts. We've built podcast channels for CEOs, venture capitalists, industry bodies, and media brands across India.</p>
+        <div class="reveal" style="margin-top:2rem;">
+          <a href="contact.html" class="btn-primary">Get a Free Quote →</a>
+        </div>
+      </div>
+      <div class="intro-img reveal-right">
+        <img src="https://www.orangevideos.in/assets/images/home/discover-our-expertise/podcast-video.webp" alt="Video Podcast Production" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp'" loading="lazy">
+        <div class="intro-badge">🎬 Orange Videos</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="feat-section spotlight-section">
+    <div class="section-label reveal">What We Offer</div>
+    <h2 class="section-title reveal-3d">Why Choose Orange Videos for <span class="hl">Video Podcast</span></h2>
+    <div class="feat-grid">
+      <div class="feat-card reveal tilt-card shimmer-on-enter">
+        <div class="feat-icon">🎙️</div>
+        <div class="feat-body">
+          <div class="feat-title">Multi-Camera Studio</div>
+          <div class="feat-desc">Professional 3–4 camera setup with studio lighting rigs for broadcast-quality visual production.</div>
+        </div>
+      </div>
+      <div class="feat-card reveal tilt-card shimmer-on-enter">
+        <div class="feat-icon">🔊</div>
+        <div class="feat-body">
+          <div class="feat-title">Broadcast Audio</div>
+          <div class="feat-desc">Dedicated audio engineers with studio-grade microphones, acoustic treatment, and real-time monitoring.</div>
+        </div>
+      </div>
+      <div class="feat-card reveal tilt-card shimmer-on-enter">
+        <div class="feat-icon">✂️</div>
+        <div class="feat-body">
+          <div class="feat-title">Fast-Turn Editing</div>
+          <div class="feat-desc">Episode editing with branded intros/outros, lower thirds, chapter markers, and highlight clip extraction.</div>
+        </div>
+      </div>
+      <div class="feat-card reveal tilt-card shimmer-on-enter">
+        <div class="feat-icon">📱</div>
+        <div class="feat-body">
+          <div class="feat-title">Short Clip Repurposing</div>
+          <div class="feat-desc">We extract the best 60-second moments from every episode for Instagram Reels, LinkedIn, and YouTube Shorts.</div>
+        </div>
+      </div>
+      <div class="feat-card reveal tilt-card shimmer-on-enter">
+        <div class="feat-icon">🎨</div>
+        <div class="feat-body">
+          <div class="feat-title">Branded Templates</div>
+          <div class="feat-desc">Custom episode thumbnails, lower thirds, and animated intros aligned to your podcast brand identity.</div>
+        </div>
+      </div>
+      <div class="feat-card reveal tilt-card shimmer-on-enter">
+        <div class="feat-icon">🌐</div>
+        <div class="feat-body">
+          <div class="feat-title">Distribution Setup</div>
+          <div class="feat-desc">Technical setup and optimization for YouTube, Spotify, Apple Podcasts, Google Podcasts, and RSS syndication.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process-section spotlight-section">
+    <div class="section-label reveal">How We Work</div>
+    <h2 class="section-title reveal-3d">Our <span class="hl">Video Podcast</span> Production Process</h2>
+    <div class="process-grid">
+      <div class="proc-card reveal tilt-card">
+        <div class="proc-num">01</div>
+        <div class="proc-title">Podcast Strategy</div>
+        <div class="proc-desc">We help define your show concept, episode format, frequency, and audience positioning before the first recording.</div>
+      </div>
+      <div class="proc-card reveal tilt-card">
+        <div class="proc-num">02</div>
+        <div class="proc-title">Studio Setup</div>
+        <div class="proc-desc">Full studio configuration — lighting, cameras, microphones, acoustics, and teleprompter if required.</div>
+      </div>
+      <div class="proc-card reveal tilt-card">
+        <div class="proc-num">03</div>
+        <div class="proc-title">Recording Session</div>
+        <div class="proc-desc">Directed recording sessions with our video team ensuring every shot and every word is captured cleanly.</div>
+      </div>
+      <div class="proc-card reveal tilt-card">
+        <div class="proc-num">04</div>
+        <div class="proc-title">Episode Editing</div>
+        <div class="proc-desc">Story-driven editing that maintains energy, removes dead air, and keeps viewers watching through to the end.</div>
+      </div>
+      <div class="proc-card reveal tilt-card">
+        <div class="proc-num">05</div>
+        <div class="proc-title">Branding & Graphics</div>
+        <div class="proc-desc">Thumbnails, lower thirds, episode titles, and animated intros that reinforce your podcast's visual identity.</div>
+      </div>
+      <div class="proc-card reveal tilt-card">
+        <div class="proc-num">06</div>
+        <div class="proc-title">Distribution</div>
+        <div class="proc-desc">Upload, SEO optimization, and cross-platform distribution for maximum reach and discoverability.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="mini-work-section spotlight-section">
+    <div class="section-label reveal">Our Portfolio</div>
+    <h2 class="section-title reveal-3d">Recent <span class="hl">Video Podcast</span> Work</h2>
+    <p class="reveal" style="color:var(--gray);max-width:520px;line-height:1.8;margin-top:1rem;">See how we've helped brands like yours communicate their message through powerful visual storytelling.</p>
+    <div class="mini-work-grid">
+      <div class="mw-card reveal" onclick="openYTModal('https://www.youtube.com/watch?v=BLHUYNRv6LY')">
+        <img src="https://www.orangevideos.in/assets/images/home/our-work/entropik.png" alt="Entropik" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp'" loading="lazy">
+        <div class="mw-overlay">
+          <div class="mw-play">▶</div>
+          <div class="mw-name">Entropik</div>
+          <div class="mw-cat">Research · Corporate Video</div>
+        </div>
+      </div>
+      <div class="mw-card reveal" onclick="window.open('#','_blank')">
+        <img src="https://www.orangevideos.in/assets/images/home/banner-img.webp" alt="Orange Videos Studio" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp'" loading="lazy">
+        <div class="mw-overlay">
+          <div class="mw-play">▶</div>
+          <div class="mw-name">Orange Videos Studio</div>
+          <div class="mw-cat">Video Podcast · Demo</div>
+        </div>
+      </div>
+      <div class="mw-card reveal" onclick="window.open('#','_blank')">
+        <img src="https://www.orangevideos.in/assets/images/home/our-work/futuready.png" alt="Futuready" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp'" loading="lazy">
+        <div class="mw-overlay">
+          <div class="mw-play">▶</div>
+          <div class="mw-name">Futuready</div>
+          <div class="mw-cat">Agency · Video Content</div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:3rem;">
+      <a href="work.html" class="btn-outline">View Full Portfolio →</a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section spotlight-section">
+    <div class="section-label reveal">Common Questions</div>
+    <h2 class="section-title reveal-3d">Frequently Asked <span class="hl">Questions</span></h2>
+    <div class="faq-accordion">
+      <div class="faq-item reveal">
+  <div class="faq-q"><span class="faq-num">+</span><span class="faq-q-text">Do you provide a studio for recording?</span><span class="faq-icon">+</span></div>
+  <div class="faq-a">Yes — our Mumbai and Bangalore studios are fully equipped for video podcast recording. We can also set up mobile studios at your office or preferred location.</div>
+</div>
+      <div class="faq-item reveal">
+  <div class="faq-q"><span class="faq-num">+</span><span class="faq-q-text">Can you handle regular weekly episode production?</span><span class="faq-icon">+</span></div>
+  <div class="faq-a">Yes — we offer retainer-based production packages for weekly or bi-weekly podcasts, handling recording, editing, and distribution on a fixed schedule.</div>
+</div>
+      <div class="faq-item reveal">
+  <div class="faq-q"><span class="faq-num">+</span><span class="faq-q-text">What equipment is included?</span><span class="faq-icon">+</span></div>
+  <div class="faq-a">4K multi-camera setup, professional broadcast audio, studio lighting, green screen if needed, teleprompter, and our full production crew.</div>
+</div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-strip reveal orb-bg">
+    <h2>Ready to Start Your <span class="hl">Video Podcast</span> Project?</h2>
+    <p>Tell us about your vision. Our production team will respond within 24 hours with a custom proposal.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative;">
+      <a href="contact.html" class="btn-primary">Get a Free Quote →</a>
+      <a href="https://wa.me/919867409221" target="_blank" class="btn-outline">💬 WhatsApp Us</a>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand"><a class="footer-logo" href="index.html"><img src="images/ov-logo.png" alt="Orange Videos"></a><p>India's leading ad film production agency helping brands turn their vision into reality through dynamic video content.</p><div class="footer-social">
+  <a class="f-soc" href="https://www.youtube.com/@OrangeVideos" target="_blank" aria-label="YouTube" title="YouTube">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+  </a>
+  <a class="f-soc" href="https://www.instagram.com/orangevideos.in/" target="_blank" aria-label="Instagram" title="Instagram">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+  </a>
+  <a class="f-soc" href="https://www.linkedin.com/company/orangevideos/" target="_blank" aria-label="LinkedIn" title="LinkedIn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+  </a>
+  <a class="f-soc" href="https://www.facebook.com/orangevideos.in/" target="_blank" aria-label="Facebook" title="Facebook">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+  </a>
+</div></div>
+    <div class="footer-col"><h4>Main</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="work.html">Work</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><h4>Services</h4><a href="service-ad-films.html">Ad Films</a><a href="service-brand-films.html">Brand Films</a><a href="service-corporate-video.html">Corporate Videos</a><a href="service-explainer-videos.html">Explainer Videos</a><a href="service-2d-animation.html">2D Animation</a><a href="service-3d-animation.html">3D Animation</a><a href="service-ai-videos.html">AI Videos</a></div>
+    <div class="footer-col"><h4>Contact</h4><strong>Mumbai</strong><p>102, Kaatyayani Business Center, Off Mahakali Caves Road, MIDC, Andheri East, Mumbai – 400093</p><strong style="margin-top:1rem;">UAE</strong><p>Shams Business Center, Sharjah Media City Free Zone, Sharjah UAE</p><a href="tel:+919867409221" style="color:var(--orange);margin-top:1rem;">+91 98674 09221</a><a href="mailto:sales@orangevideos.in" style="color:var(--orange);">sales@orangevideos.in</a></div>
+  </div>
+  <div class="footer-bottom"><span>© copyright 2026 · Orange Videos Production LLP</span><span>Mumbai · Bangalore · UAE</span></div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+document.querySelector('nav').style.top='38px';
+window.addEventListener('scroll',()=>{ if(window.scrollY>100) document.querySelector('nav').style.top='0'; else document.querySelector('nav').style.top='38px'; });
+</script>
+
+<!-- ── GLOBAL YOUTUBE MODAL ── -->
+<div id="yt-modal-bg" style="display:none;position:fixed;inset:0;z-index:9500;background:rgba(10,10,10,0.92);backdrop-filter:blur(18px);align-items:center;justify-content:center;padding:1rem;">
+  <div id="yt-modal-box" style="position:relative;width:100%;max-width:900px;border-radius:12px;overflow:hidden;border:1px solid rgba(242,101,34,0.25);box-shadow:0 40px 100px rgba(0,0,0,0.7);">
+    <button onclick="closeYTModal()" style="position:absolute;top:0.8rem;right:0.8rem;z-index:2;width:36px;height:36px;border-radius:50%;background:rgba(242,101,34,0.9);border:none;color:#000;font-size:1rem;cursor:pointer;font-weight:900;line-height:1;display:flex;align-items:center;justify-content:center;">✕</button>
+    <iframe id="yt-modal-iframe" width="100%" style="aspect-ratio:16/9;border:none;display:block;" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture" src=""></iframe>
+  </div>
+</div>
+
+<script>
+// ── GLOBAL YT MODAL ────────────────────────────────────────────────────
+function getYTId(url){
+  if(!url||url==='#') return null;
+  var m=url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  return m?m[1]:null;
+}
+function openYTModal(url){
+  var id=getYTId(url);
+  if(!id){ window.open(url,'_blank'); return; }
+  var bg=document.getElementById('yt-modal-bg');
+  document.getElementById('yt-modal-iframe').src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0';
+  bg.style.display='flex';
+  document.body.style.overflow='hidden';
+}
+function closeYTModal(){
+  var bg=document.getElementById('yt-modal-bg');
+  bg.style.display='none';
+  document.getElementById('yt-modal-iframe').src='';
+  document.body.style.overflow='';
+}
+document.getElementById('yt-modal-bg').addEventListener('click',function(e){
+  if(e.target===this) closeYTModal();
+});
+// Make all mw-card and bts-card with YT links open in modal
+document.querySelectorAll('.mw-card[onclick], .bts-card[onclick]').forEach(function(el){
+  var oc=el.getAttribute('onclick')||'';
+  var m=oc.match(/window\.open\(['"]([^'"]+)['"]/);
+  if(m&&m[1]&&m[1]!=='#'&&m[1].includes('youtu')){
+    el.setAttribute('onclick',"openYTModal('"+m[1]+"')");
+  }
+});
+// Showreel play buttons (class showreel-thumb, play-btn-lg)
+document.querySelectorAll('.showreel-thumb, .showreel-mini-thumb').forEach(function(el){
+  var oc=el.getAttribute('onclick')||'';
+  var m=oc.match(/window\.open\(['"]([^'"]+)['"]/);
+  if(m&&m[1]) { el.setAttribute('onclick',"openYTModal('"+m[1]+"')"); }
+});
+</script>
+
+<script>
+// ── SECTION SPOTLIGHT BG EFFECT ──
+document.querySelectorAll('.spotlight-section').forEach(function(section) {
+  section.addEventListener('mousemove', function(e) {
+    var r  = section.getBoundingClientRect();
+    var mx = ((e.clientX - r.left) / r.width  * 100).toFixed(2);
+    var my = ((e.clientY - r.top)  / r.height * 100).toFixed(2);
+    section.style.setProperty('--mx', mx + '%');
+    section.style.setProperty('--my', my + '%');
+  });
+});
+</script>
+</body>
+</html>

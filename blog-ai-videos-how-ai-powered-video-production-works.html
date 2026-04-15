@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wondering what AI Videos are? How AI-Powered Video Production Works? | Orange Videos Blog</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+#reading-progress{position:fixed;top:0;left:0;height:3px;z-index:9999;background:linear-gradient(90deg,var(--orange),var(--orange2));width:0%;box-shadow:0 0 12px rgba(242,101,34,0.8);}
+.post-hero{padding:9rem 4rem 0;background:var(--dark2);position:relative;overflow:hidden;}
+.post-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,rgba(242,101,34,0.1),transparent 65%);animation:heroPulse 7s ease-in-out infinite alternate;}
+.post-hero-inner{position:relative;z-index:1;max-width:840px;margin:0 auto;padding-bottom:3rem;}
+.post-crumb{font-family:'Montserrat',sans-serif;font-size:0.72rem;color:var(--gray2);margin-bottom:2rem;display:flex;align-items:center;gap:0.5rem;animation:riseUp 0.6s 0.1s both;}
+.post-crumb a{color:var(--orange);text-decoration:none;}
+.post-cat{display:inline-block;background:rgba(242,101,34,0.1);border:1px solid rgba(242,101,34,0.3);padding:0.3rem 1rem;border-radius:3px;font-family:'Montserrat',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:1.4rem;animation:riseUp 0.6s 0.15s both;}
+.post-hero h1{font-family:'Raleway',sans-serif;font-weight:900;font-size:clamp(2rem,5vw,3.6rem);line-height:1.1;letter-spacing:-1px;margin-bottom:1.2rem;animation:riseUp 0.8s 0.25s both;}
+.post-hero h1 .hl{color:var(--orange);}
+.post-meta-bar{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;padding:1.2rem 0;border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);animation:riseUp 0.7s 0.4s both;}
+.p-author{display:flex;align-items:center;gap:0.7rem;}
+.p-av{width:38px;height:38px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:800;color:#000;flex-shrink:0;overflow:hidden;border:2px solid rgba(242,101,34,0.3);}
+.p-av img{width:100%;height:100%;object-fit:cover;}
+.p-name{font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.82rem;color:var(--white);}
+.p-role{font-size:0.68rem;color:var(--gray2);margin-top:0.1rem;}
+.p-sep{width:1px;height:24px;background:rgba(255,255,255,0.1);}
+.p-info{font-family:'Montserrat',sans-serif;font-size:0.7rem;color:var(--gray2);}
+.share-row{margin-left:auto;display:flex;gap:0.4rem;}
+.sh-btn{width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,0.12);background:transparent;color:var(--gray);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:0.78rem;transition:all 0.3s;}
+.sh-btn:hover{background:var(--orange);color:#000;border-color:var(--orange);transform:translateY(-2px);}
+.hero-img-wrap{max-width:900px;margin:0 auto;border-radius:12px 12px 0 0;overflow:hidden;isolation:isolate;}
+.hero-img-wrap img{width:100%;display:block;max-height:460px;object-fit:cover;}
+.article-wrap{display:grid;grid-template-columns:1fr 280px;gap:4rem;max-width:1160px;margin:0 auto;padding:4rem 4rem 6rem;}
+.prose p{color:rgba(255,255,255,0.78);font-size:1rem;line-height:1.95;margin-bottom:1.5rem;}
+.prose h2{font-family:'Raleway',sans-serif;font-weight:900;font-size:1.75rem;color:var(--white);margin:2.8rem 0 1rem;padding-left:1.1rem;position:relative;letter-spacing:-0.3px;}
+.prose h2::before{content:'';position:absolute;left:0;top:0.15em;bottom:0.15em;width:3px;background:linear-gradient(180deg,var(--orange),var(--orange2));border-radius:2px;}
+.prose h3{font-family:'Raleway',sans-serif;font-weight:800;font-size:1.25rem;color:var(--white);margin:2rem 0 0.8rem;letter-spacing:-0.2px;}
+.prose strong{color:var(--white);font-weight:700;}
+.prose a{color:var(--orange);text-decoration:underline;text-underline-offset:3px;}
+.prose ul,.prose ol{color:rgba(255,255,255,0.78);padding-left:1.5rem;margin-bottom:1.5rem;line-height:2;}
+.pull-q{border-left:3px solid var(--orange);padding:1.3rem 1.8rem;margin:2.2rem 0;background:rgba(242,101,34,0.05);border-radius:0 8px 8px 0;}
+.pull-q p{font-family:'Raleway',sans-serif;font-weight:700;font-size:1.1rem;color:var(--white);line-height:1.6;font-style:italic;margin:0!important;}
+.stat-box-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0;padding:1.8rem;background:var(--dark3);border-radius:12px;border:1px solid rgba(242,101,34,0.12);}
+.sb-item{text-align:center;}
+.sb-num{font-family:'Raleway',sans-serif;font-weight:900;font-size:2.2rem;color:var(--orange);line-height:1;text-shadow:0 0 24px rgba(242,101,34,0.4);}
+.sb-label{font-size:0.75rem;color:var(--gray);margin-top:0.4rem;line-height:1.4;}
+.inline-cta{background:var(--dark3);border:1px solid rgba(242,101,34,0.15);border-radius:12px;padding:1.8rem 2rem;margin:2.2rem 0;display:flex;align-items:center;gap:1.5rem;}
+.inline-cta-text strong{font-family:'Raleway',sans-serif;font-weight:800;font-size:1rem;display:block;margin-bottom:0.3rem;}
+.inline-cta-text p{color:var(--gray);font-size:0.85rem;margin:0!important;}
+.post-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:2.5rem;padding-top:1.8rem;border-top:1px solid rgba(255,255,255,0.07);}
+.post-tag{padding:0.3rem 0.8rem;border-radius:100px;border:1px solid rgba(255,255,255,0.1);font-family:'Montserrat',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:all 0.3s;}
+.post-tag:hover{border-color:rgba(242,101,34,0.4);color:var(--orange);}
+.pn-nav{display:flex;gap:1rem;margin-top:2.5rem;}
+.pn-card{flex:1;background:var(--dark3);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:1.2rem 1.5rem;text-decoration:none;transition:all 0.3s;}
+.pn-card:hover{border-color:rgba(242,101,34,0.3);transform:translateY(-3px);}
+.pn-dir{font-family:'Montserrat',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:0.4rem;}
+.pn-title{font-family:'Raleway',sans-serif;font-weight:700;font-size:0.88rem;color:var(--gray);line-height:1.4;}
+.pn-card.next{text-align:right;}
+/* sidebar */
+.post-sidebar{position:sticky;top:100px;}
+.sb-widget{background:var(--dark3);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.6rem;margin-bottom:1.2rem;}
+.sb-widget h4{font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;}
+.sb-widget h4::before{content:'';width:14px;height:2px;background:var(--orange);}
+.sb-rel{display:flex;gap:0.7rem;padding:0.7rem 0;border-bottom:1px solid rgba(255,255,255,0.05);text-decoration:none;}
+.sb-rel:last-child{border-bottom:none;padding-bottom:0;}
+.sb-rel-thumb{width:52px;height:40px;border-radius:5px;overflow:hidden;flex-shrink:0;isolation:isolate;}
+.sb-rel-thumb img{width:100%;height:100%;object-fit:cover;}
+.sb-rel-title{font-size:0.76rem;color:var(--gray);line-height:1.4;font-family:'Raleway',sans-serif;font-weight:700;transition:color 0.3s;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.sb-rel:hover .sb-rel-title{color:var(--orange);}
+.sb-rel-cat{font-size:0.6rem;color:var(--orange);font-family:'Montserrat',sans-serif;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:0.2rem;}
+/* related section */
+.rel-section{padding:5rem 4rem;background:var(--dark2);border-top:1px solid rgba(255,255,255,0.04);}
+.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-top:2.5rem;}
+.rel-card{border-radius:12px;overflow:hidden;background:var(--dark3);border:1px solid rgba(255,255,255,0.05);transition:all 0.4s;text-decoration:none;color:inherit;display:flex;flex-direction:column;}
+.rel-card:hover{transform:translateY(-6px);border-color:rgba(242,101,34,0.25);box-shadow:0 24px 60px rgba(0,0,0,0.5);}
+.rel-thumb{aspect-ratio:16/9;overflow:hidden;isolation:isolate;}
+.rel-thumb img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s;}
+.rel-card:hover .rel-thumb img{transform:scale(1.07);}
+.rel-body{padding:1.3rem;flex:1;}
+.rel-cat{font-family:'Montserrat',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem;}
+.rel-title{font-family:'Raleway',sans-serif;font-weight:800;font-size:0.92rem;line-height:1.4;color:var(--white);transition:color 0.3s;}
+.rel-card:hover .rel-title{color:var(--orange);}
+.rel-date{font-size:0.68rem;color:var(--gray2);margin-top:0.7rem;font-family:'Montserrat',sans-serif;}
+@media(max-width:1100px){.article-wrap{grid-template-columns:1fr;gap:2rem;}.post-sidebar{position:static;display:grid;grid-template-columns:1fr 1fr;gap:1rem;}}
+@media(max-width:900px){.post-hero,.article-wrap,.rel-section{padding-left:1.5rem;padding-right:1.5rem;}.stat-box-row{grid-template-columns:1fr;}.rel-grid{grid-template-columns:1fr;}.pn-nav{flex-direction:column;}.post-sidebar{grid-template-columns:1fr;}.inline-cta{flex-direction:column;gap:1rem;}}
+</style>
+</head>
+<body>
+<div id="cursor"></div><div id="cursor-ring"></div>
+<div id="reading-progress"></div>
+<a href="https://wa.me/919867409221" class="wa-float" target="_blank">💬</a>
+<div class="top-banner"><a href="https://www.youtube.com/watch?v=01hfHULpgbY" target="_blank">🎬 Watch our latest ad film teaser now! →</a></div>
+<nav style="top:38px">  <a class="logo" href="index.html"><img src="images/ov-logo.png" alt="Orange Videos"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Enquire Now</a></nav>
+<main>
+<div class="post-hero">
+  <div class="post-hero-inner">
+    <div class="post-crumb"><a href="index.html">Home</a><span>/</span><a href="blog.html">Blog</a><span>/</span><span style="color:var(--gray);">AI Videos</span></div>
+    <div class="post-cat">AI Videos</div>
+    <h1>Wondering what AI Videos are? How AI-Powered Video Production Works?</h1>
+    <div class="post-meta-bar">
+      <div class="p-author">
+        <div class="p-av">OR</div>
+        <div><div class="p-name">OrangeVideos</div><div class="p-role">Orange Videos Team</div></div>
+      </div>
+      <div class="p-sep"></div>
+      <div class="p-info">📅 Feb 9, 2026</div>
+      <div class="p-sep"></div>
+      <div class="p-info">⏱ 7 min read</div>
+      <div class="share-row">
+        <button class="sh-btn" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(window.location.href),'_blank')" title="LinkedIn">in</button>
+        <button class="sh-btn" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='✓';setTimeout(()=>this.textContent='🔗',2000)" title="Copy link">🔗</button>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img-wrap">
+    <img src="https://www.orangevideos.in/assets/images/blog-thumbnails/ai-videos-how-ai-powered-video-production-works-thumbnail.webp" alt="Wondering what AI Videos are? How AI-Powered Video Production Works?" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;">
+  </div>
+</div>
+<div class="article-wrap">
+  <article class="prose">
+    <p><strong>A clear explainer on AI video production — what it is, how it works, and whether your brand should be using it.</strong></p>
+    <p>The video production landscape in India is evolving at an unprecedented pace. As brands navigate an increasingly fragmented media environment, the question isn't whether to invest in video — it's how to make every frame count. At Orange Videos, we've spent over 13 years helping brands across India and 12 countries tell their stories through powerful visual content.</p>
+    
+    <div class="stat-box-row reveal">
+      <div class="sb-item"><div class="sb-num">1000+</div><div class="sb-label">Projects Delivered</div></div>
+      <div class="sb-item"><div class="sb-num">600+</div><div class="sb-label">Happy Clients</div></div>
+      <div class="sb-item"><div class="sb-num">13+</div><div class="sb-label">Years Experience</div></div>
+    </div>
+    
+    <h2>What This Means for Your Brand</h2>
+    <p>Every video production decision carries strategic weight. The format you choose, the platform you optimise for, the story you tell — each of these decisions either amplifies or diminishes your brand's ability to connect with the right audience at the right moment.</p>
+    <p>The brands that win with video aren't necessarily the ones with the biggest budgets. They're the ones with the clearest thinking about what they want their audience to feel, understand, or do after watching. <strong>That clarity — more than production value — is what separates the videos that drive results from the ones that disappear into the scroll.</strong></p>
+    
+    <div class="pull-q">
+      <p>"A clear explainer on AI video production — what it is, how it works, and whether your brand should be using it."</p>
+    </div>
+    
+    <h2>The Orange Videos Perspective</h2>
+    <p>In our experience working with brands across FMCG, BFSI, manufacturing, healthcare, technology, and education sectors, the most effective videos share three characteristics: they have a clear, singular objective; they are built for the specific platform and audience they're targeting; and they are produced with enough creative ambition to stand out in an environment saturated with content.</p>
+    <p>This is harder to achieve than it sounds. The default for most briefs is to try to do too much — communicate too many messages, reach too many audiences, serve too many stakeholders. The discipline of simplicity is one of the hardest things we help our clients develop.</p>
+    
+    <h2>How to Apply This to Your Next Video Project</h2>
+    <h3>Start with the Audience, Not the Product</h3>
+    <p>The most common mistake we see in video briefs is leading with what the brand wants to say rather than what the audience needs to hear. These are rarely the same thing. The best creative work begins with a genuine, specific insight about the audience — what they believe, what they fear, what they aspire to — and builds outward from there.</p>
+    <h3>Choose One Platform and Own It</h3>
+    <p>Multi-platform distribution is a goal for optimisation, not production. When you're making creative decisions, anchor to one primary platform and one primary moment of consumption. A video designed for lean-back YouTube viewing will feel wrong on Instagram. A vertical Reel repurposed for a boardroom presentation will fall flat. Make it right for one context first, then adapt intelligently.</p>
+    <h3>Measure What Matters</h3>
+    <p>Video metrics are easy to collect and easy to misread. Views and impressions are vanity metrics unless tied to a defined objective. If your goal is brand awareness, measure aided and unaided recall. If it's consideration, measure intent lift. If it's conversion, measure downstream sales attribution. Match the metric to the objective, not the other way around.</p>
+    
+    <div class="inline-cta reveal">
+      <div class="inline-cta-text">
+        <strong>Ready to start your next video project?</strong>
+        <p>Our team works with brands across India and globally. Get a free consultation and project quote.</p>
+      </div>
+      <a href="contact.html" class="btn-primary" style="white-space:nowrap;font-size:0.78rem;flex-shrink:0;">Get a Free Quote →</a>
+    </div>
+    
+    <h2>Conclusion</h2>
+    <p>The gap between brands that use video effectively and those that don't is widening. The tools are more accessible than ever, the distribution channels are more powerful, and the audience appetite for compelling visual content shows no sign of slowing. The question is whether your brand is building the systems, the relationships, and the creative culture to take full advantage.</p>
+    <p>Orange Videos is a Mumbai-based video production agency specialising in <a href="service-ad-films.html">ad films</a>, <a href="service-brand-films.html">brand films</a>, <a href="service-corporate-video.html">corporate videos</a>, <a href="service-explainer-videos.html">explainer videos</a>, and <a href="service-ai-videos.html">AI-powered video production</a>. <a href="contact.html">Get in touch</a> to discuss your next project.</p>
+    
+    <div class="post-tags">
+      <a class="post-tag" href="#">AI Videos</a>
+      <a class="post-tag" href="#">Video Production</a>
+      <a class="post-tag" href="#">Brand Strategy</a>
+      <a class="post-tag" href="#">Indian Brands</a>
+      <a class="post-tag" href="#">Orange Videos</a>
+    </div>
+    
+    <div class="pn-nav">
+      <a class="pn-card prev" href="blog-types-of-product-videos-that-drive-sales.html"><span class="pn-dir">← Previous</span><span class="pn-title">7 Types of Product Videos That Actually Drive Sales</span></a><a class="pn-card next" href="blog-podcasting-for-founders-personal-branding.html"><span class="pn-dir">Next →</span><span class="pn-title">How Founders Can Use Podcasting to Strengthen Their Personal…</span></a>
+    </div>
+  </article>
+  
+  <aside class="post-sidebar">
+    <div class="sb-widget">
+      <h4>Related Posts</h4>
+      <a class="sb-rel" href="blog-what-are-ai-videos-how-ai-powered-video-production-works.html"><div class="sb-rel-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/what-are-ai-videos-how-ai-powered-video-production-works-thumbnail.webp" alt="" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"></div><div><div class="sb-rel-cat">AI Videos</div><div class="sb-rel-title">What Are AI Videos? How AI-Powered Video Production Works</div></div></a><a class="sb-rel" href="blog-bookachange-unmute-anthem-film-case-study.html"><div class="sb-rel-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/blog-thumbnail-unmute.webp" alt="" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"></div><div><div class="sb-rel-cat">AI Videos</div><div class="sb-rel-title">When AI Creates a Movement: The UnMute Anthem Story</div></div></a><a class="sb-rel" href="blog-pvc-history-animation-multimedia-video-production.html"><div class="sb-rel-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/pvc_thumbnail.jpg" alt="" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"></div><div><div class="sb-rel-cat">AI Videos</div><div class="sb-rel-title">Creating 100 Years Journey Through a 4 min Video in 6 Weeks</div></div></a>
+    </div>
+    <div class="sb-widget" style="background:linear-gradient(135deg,rgba(242,101,34,0.1),rgba(30,30,30,0.9));border-color:rgba(242,101,34,0.2);">
+      <h4>Start a Project</h4>
+      <p style="color:var(--gray);font-size:0.82rem;line-height:1.6;margin-bottom:1rem;">Ready to create world-class video content for your brand?</p>
+      <a href="contact.html" class="btn-primary" style="font-size:0.72rem;padding:0.65rem 1.2rem;display:block;text-align:center;">Get a Free Quote →</a>
+    </div>
+  </aside>
+</div>
+
+<section class="rel-section">
+  <div class="section-label reveal" style="justify-content:center;padding:0 4rem;">Keep Reading</div>
+  <h2 class="section-title reveal" style="text-align:center;padding:0.5rem 4rem 0;">More from the <span class="hl">Blog</span></h2>
+  <div class="rel-grid" style="padding:0 4rem;"><a class="rel-card reveal" href="blog-what-are-ai-videos-how-ai-powered-video-production-works.html">
+      <div class="rel-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/what-are-ai-videos-how-ai-powered-video-production-works-thumbnail.webp" alt="" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"></div>
+      <div class="rel-body"><div class="rel-cat">AI Videos</div><div class="rel-title">What Are AI Videos? How AI-Powered Video Production Works</div><div class="rel-date">Mar 27, 2026 · 11 min</div></div>
+    </a><a class="rel-card reveal" href="blog-bookachange-unmute-anthem-film-case-study.html">
+      <div class="rel-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/blog-thumbnail-unmute.webp" alt="" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"></div>
+      <div class="rel-body"><div class="rel-cat">AI Videos</div><div class="rel-title">When AI Creates a Movement: The UnMute Anthem Story</div><div class="rel-date">Mar 20, 2026 · 5 min</div></div>
+    </a><a class="rel-card reveal" href="blog-pvc-history-animation-multimedia-video-production.html">
+      <div class="rel-thumb"><img src="https://www.orangevideos.in/assets/images/blog-thumbnails/pvc_thumbnail.jpg" alt="" loading="lazy" onerror="this.src='https://www.orangevideos.in/assets/images/home/banner-img.webp';this.onerror=null;"></div>
+      <div class="rel-body"><div class="rel-cat">AI Videos</div><div class="rel-title">Creating 100 Years Journey Through a 4 min Video in 6 Weeks</div><div class="rel-date">Feb 26, 2026 · 6 min</div></div>
+    </a></div>
+  <div style="text-align:center;margin-top:2.5rem;"><a href="blog.html" class="btn-outline">← Back to All Articles</a></div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand"><a class="footer-logo" href="index.html"><img src="images/ov-logo.png" alt="Orange Videos"></a><p>India's leading ad film production agency.</p><div class="footer-social"><a class="f-soc" href="https://www.youtube.com/@OrangeVideos" target="_blank" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a><a class="f-soc" href="https://www.instagram.com/orangevideos.in/" target="_blank" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a><a class="f-soc" href="https://www.linkedin.com/company/orangevideos/" target="_blank" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a class="f-soc" href="https://www.facebook.com/orangevideos.in/" target="_blank" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a></div></div>
+    <div class="footer-col"><h4>Main</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="work.html">Work</a><a href="careers.html">Careers</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><h4>Services</h4><a href="service-ad-films.html">Ad Films</a><a href="service-brand-films.html">Brand Films</a><a href="service-corporate-video.html">Corporate Videos</a><a href="service-explainer-videos.html">Explainer Videos</a><a href="service-2d-animation.html">2D Animation</a><a href="service-ai-videos.html">AI Videos</a></div>
+    <div class="footer-col"><h4>Contact</h4><strong>Mumbai</strong><p>102, Kaatyayani Business Center, Andheri East, Mumbai – 400093</p><a href="tel:+919867409221" style="color:var(--orange);display:block;margin-top:0.8rem;">+91 98674 09221</a><a href="mailto:sales@orangevideos.in" style="color:var(--orange);">sales@orangevideos.in</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 · Orange Videos Production LLP</span><span>Mumbai · Bangalore · UAE</span></div>
+</footer>
+<script src="shared.js"></script>
+<script>
+window.addEventListener('scroll',function(){var p=document.getElementById('reading-progress');var a=document.querySelector('.prose');if(!p||!a)return;var r=a.getBoundingClientRect();var t=a.offsetHeight-window.innerHeight;var s=Math.max(0,-r.top);p.style.width=Math.min(100,s/t*100)+'%';},{passive:true});
+document.querySelector('nav').style.top='38px';
+window.addEventListener('scroll',function(){document.querySelector('nav').style.top=window.scrollY>100?'0':'38px';});
+</script>
+<div id="yt-modal-bg" style="display:none;position:fixed;inset:0;z-index:9500;background:rgba(10,10,10,0.92);backdrop-filter:blur(18px);align-items:center;justify-content:center;padding:1rem;">
+  <div style="position:relative;width:100%;max-width:900px;border-radius:12px;overflow:hidden;border:1px solid rgba(242,101,34,0.25);">
+    <button onclick="document.getElementById('yt-modal-bg').style.display='none';document.getElementById('yt-modal-iframe').src=''" style="position:absolute;top:0.8rem;right:0.8rem;z-index:2;width:36px;height:36px;border-radius:50%;background:rgba(242,101,34,0.9);border:none;color:#000;font-size:1rem;cursor:pointer;font-weight:900;">✕</button>
+    <iframe id="yt-modal-iframe" width="100%" style="aspect-ratio:16/9;border:none;display:block;" allowfullscreen allow="autoplay; encrypted-media" src=""></iframe>
+  </div>
+</div>
+</body>
+</html>
